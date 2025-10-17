@@ -1,0 +1,174 @@
+{% extends 'profile_base.html' %}
+{% load static %}
+{% block profile %}
+    <!-- ============================ profile Page ================================== -->
+    <section class="pt-5 gray-simple position-relative ">
+        <div class="container">
+
+
+            <div class="row align-items-start justify-content-between gx-xl-4 mt-5">
+
+                <div class="col-xl-4 col-lg-4 col-md-12 mt-2">
+                    <div class="card rounded-2 ms-xl-5 mb-4">
+                        <div class="card-top position-relative" style="background-color: #1B3A57FF">
+                            <div class="position-absolute start-0 top-0 mt-4 ms-3"><a href="login.html"
+                                                                                      class="square--40 circle bg-light-dark text-light"><i
+                                    class="fa-solid fa-right-from-bracket"></i></a></div>
+                            <div class="py-5 px-3">
+                                <div class="crd-thumbimg text-center">
+                                    {#                                    <div class="p-2 d-flex align-items-center justify-content-center brd"><img#}
+                                    {#                                            src="assets/img/team-1.jpg"#}
+                                    {#                                            class="img-fluid circle" width="120" alt=""></div>#}
+                                </div>
+                                <div class="crd-capser text-center">
+                                    <h5 class="mb-0 text-light fw-semibold">مهرداد حسینی</h5>
+                                    <span class="text-light opacity-75 fw-medium text-md"><i
+                                            class="fa-solid fa-location-dot ms-2"></i>کالیفرنیا، آمریکا</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-middle px-4 py-5">
+                            <div class="crdapproval-groups">
+                                <div class="crdapproval-single d-flex align-items-center justify-content-start mb-4">
+                                    <div class="crdapproval-item">
+                                        <div class="square--50 circle bg-light-success text-success"><i
+                                                class="fa-solid fa-phone-volume fs-5"></i></div>
+                                    </div>
+                                    <div class="crdapproval-caps pe-2">
+                                        <p class="fw-semibold text-dark lh-2 mb-0">تایید شماره تماس</p>
+                                        <p class="text-md text-muted lh-1 mb-0"></p>
+                                    </div>
+                                </div>
+                                <div class="crdapproval-single d-flex align-items-center justify-content-start mb-4">
+                                    <div class="crdapproval-item">
+                                        <div class="square--50 circle bg-light-success text-danger"><i
+                                                class="fa-solid fa-envelope-circle-check fs-5"></i></div>
+                                    </div>
+                                    <div class="crdapproval-caps pe-2">
+                                        <p class="fw-semibold text-dark lh-2 mb-0">عدم تایید ایمیل</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-xl-8 col-lg-8 col-md-12 mt-2 ">
+
+                    <!-- Personal Information -->
+                    <div class="card mb-4 ">
+                        <div class="card-header">
+                            <h4><i class="fa-solid fa-file-invoice ms-2"></i>اطلاعات شخصی</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row align-items-center justify-content-start">
+
+                                <div class="col-xl-12 col-lg-12 col-md-12 mb-4">
+                                    <div class="d-flex align-items-center">
+                                        <label class="position-relative ms-4" for="uploadfile-1" title="تغییر عکس">
+                                            <!-- Avatar place holder -->
+                                            <span class="avatar avatar-xl">
+													<img id="uploadfile-1-preview"
+                                                         class="avatar-img rounded-circle border border-white border-3 shadow"
+                                                         src="{% static 'assets/profile_icon.jpg' %}"
+                                                         alt="">
+												</span>
+                                        </label>
+                                        <!-- Upload button -->
+                                        {#                                        <label class="btn btn-sm btn-light-primary px-4 fw-medium mb-0"#}
+                                        {#                                               for="uploadfile-1">تغییر</label>#}
+                                        {#                                        <input id="uploadfile-1" class="form-control d-none" type="file">#}
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">نام</label>
+                                        <input type="text" class="form-control rounded-pill" value="مهرداد">
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">نام خانوادگی</label>
+                                        <input type="text" class="form-control rounded-pill" value="حسینی">
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">ایمیل</label>
+                                        <input type="text" class="form-control rounded-pill"
+                                               value="adamkruck@gmail.com">
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">شماره تماس</label>
+                                        <input type="text" class="form-control rounded-pill" value="9856542563">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">استان محل سکونت </label>
+                                        <input type="text" class="form-control rounded-pill" value="تهران">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">شهر محل سکونت </label>
+                                        <input type="text" class="form-control rounded-pill" value="تهران">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {#                    <div class="card">#}
+                    {#                        <div class="card-header">#}
+                    {#                            <h4><i class="fa-solid fa-lock ms-2"></i>تغییر رمز</h4>#}
+                    {#                        </div>#}
+                    {#                        <div class="card-body">#}
+                    {#                            <div class="row align-items-center justify-content-start">#}
+                    {##}
+                    {#                                <div class="col-xl-12 col-lg-12 col-md-12">#}
+                    {#                                    <div class="form-group">#}
+                    {#                                        <label class="form-label">رمز قبلی</label>#}
+                    {#                                        <input type="password" class="form-control" placeholder="*********">#}
+                    {#                                    </div>#}
+                    {#                                </div>#}
+                    {##}
+                    {#                                <div class="col-xl-12 col-lg-12 col-md-12">#}
+                    {#                                    <div class="form-group">#}
+                    {#                                        <label class="form-label">رمز جدید</label>#}
+                    {#                                        <input type="password" class="form-control" placeholder="*********">#}
+                    {#                                    </div>#}
+                    {#                                </div>#}
+                    {##}
+                    {#                                <div class="col-xl-12 col-lg-12 col-md-12">#}
+                    {#                                    <div class="form-group">#}
+                    {#                                        <label class="form-label">تایید رمز جدید</label>#}
+                    {#                                        <input type="password" class="form-control" placeholder="*********">#}
+                    {#                                    </div>#}
+                    {#                                </div>#}
+                    {##}
+                    {#                                <div class="col-xl-12 col-lg-12 col-md-12">#}
+                    {#                                    <div class="text-end">#}
+                    {#                                        <a href="my-profile.html#" class="btn btn-md btn-primary mb-0">تغییر</a>#}
+                    {#                                    </div>#}
+                    {#                                </div>#}
+                    {##}
+                    {#                            </div>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ============================ Booking Page End ================================== -->
+{% endblock %}

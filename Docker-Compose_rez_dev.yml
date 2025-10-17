@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  backend:
+    container_name: backend_mjes
+    build: .
+    command: sh -c "python manage.py collectstatic --noinput && python manage.py migrate && python manage.py runserver 0.0.0.0:8002"
+    volumes:
+      - .:/backend_mjes
+      - static_volume_mjes:/backend_mjes/static_file
+      - media_volume_mjes:/backend_mjes/media
+    ports:
+      - "8002:8002"  # مپ پورت
+    environment:
+      - DB_NAME=mjes
+      - DB_USER=${MYSQL_USER}
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+      - DB_PORT=3306
+      - debug=True
+      - ALLOWED_HOSTS=127.0.0.1,localhost,mjes.ir
+      - DJANGO_ENV=development
+    networks:
+      - shared_net
+    restart: always
+
+volumes:
+  static_volume_mjes:
+  media_volume_mjes:
+
+networks:
+  shared_net:
+    external: true

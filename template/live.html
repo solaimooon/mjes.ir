@@ -1,0 +1,37 @@
+{% extends 'masjed_base.html' %}
+{% load static %}
+
+    {% block title %}
+        پخش زنده_مسجد جامع امام جامع امام سجاد(ع)
+    {% endblock %}
+
+
+{% block body-class %}
+    live-body-page
+{% endblock %}
+{% block content %}
+
+<!-- live -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <div class="shadow p-3 bg-white rounded-3">
+                    <div class="ratio ratio-16x9">
+                        <iframe
+                                src="https://www.aparat.com/embed/live/mjes.ir"
+                                allowfullscreen
+                                scrolling="no"
+                                allow="autoplay; encrypted-media"
+                                webkitallowfullscreen="true"
+                                mozallowfullscreen="true">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

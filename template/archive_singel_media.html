@@ -1,0 +1,84 @@
+{% extends 'masjed_base.html' %}
+
+{% block title %}
+    {{ media_files.slug }}
+{% endblock %}
+
+{% block body-class %}
+    categori-body
+{% endblock %}
+
+{% block content %}
+
+    <!-- Header -->
+    <div class="header-categori-page">
+        <img src="{{ media_files.image.url }}"
+             alt="{{ media_files.slug }}"
+             class="img-fluid"
+             style="object-fit: contain; max-height: 250px; transition: transform 0.3s ease;">
+        <div class="overlay"></div>
+    </div>
+
+    <!-- Title -->
+    <div class="section-title text-center my-5">
+        <h2 class="text-black text-center fw-bold display-6" style="border-bottom: 3px solid #e63946; padding-bottom: 10px; display: inline-block;">
+            {{ media_files.title }}
+        </h2>
+        <p class="text-muted mt-2">آرشیو مراسم {{ media_files.date|date:"Y" }}</p>
+    </div>
+
+    <!-- Media Section -->
+    <div class="container my-5">
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="media-card shadow-sm rounded-4 p-4 bg-light">
+                    {% if media_files.media_type == 'audio' %}
+                        <audio controls class="w-100">
+                            <source src="{{ media_files.file.url }}" type="audio/mp3">
+                            مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
+                        </audio>
+                    {% else %}
+                        <video class="w-100 rounded-3 shadow-lg"
+                               src="{{ media_files.file.url }}"
+                               controls>
+                            مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
+                        </video>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="row my-4">
+            <div class="col-12">
+                <div class="info-cards">
+                    <div class="card bg-white rounded-3 shadow-sm mb-3 p-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-secondary">نام اثر</span>
+                            <span class="text-dark">{{ media_files.title }}</span>
+                        </div>
+                    </div>
+                    <div class="card bg-white rounded-3 shadow-sm mb-3 p-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-secondary">سبک محتوا</span>
+                            <span class="text-dark">{{ media_files.style_media_file.name }}</span>
+                        </div>
+                    </div>
+                    <div class="card bg-white rounded-3 shadow-sm mb-3 p-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-secondary">سخنران/مداح</span>
+                            <span class="text-dark">{{ media_files.owner.name }}</span>
+                        </div>
+                    </div>
+                    <div class="card bg-white rounded-3 shadow-sm p-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-secondary">تاریخ</span>
+                            <span class="text-dark">{{ media_files.date }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

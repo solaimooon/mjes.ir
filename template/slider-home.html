@@ -1,0 +1,1608 @@
+{% load static %}
+<!doctype html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="enamad" content="29431380"/>
+    <meta http-equiv="content-language" content="fa"/>
+    <title>کدوم جا،سامانه رزرو مساجد و سالن اجتماعات مساجد برای ختم </title>
+    <meta name="description"
+          content=" کدوم جا سامانه ی آنلاین رزرو مسجد و سالن اجتماعات مساجد به صورت قطعی ،ارزان و با تخفیف برای مراسم ختم و کنفرانس ،آموزش ،همایش در تهران امکان مقایسه امکانات مساجد در سراسر ایران">
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/logo.webp' %}">
+    <!-- All Plugins -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/animation.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/dropzone.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/flatpickr.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/flickity.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/lightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/magnifypopup.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/select2.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/rangeSlider.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/prism.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .carousel-item {
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.4); /* پس‌زمینه شفاف */
+            backdrop-filter: blur(9px); /* افکت بلور */
+            padding: 10px 20px;
+        }
+
+        /*  استایل‌های سفارشی برای مودال ورود */
+        .modal-content {
+            border-radius: 15px !important;
+        }
+
+        .nav-pills .nav-link {
+            color: #495057;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .divider {
+            position: relative;
+            border-top: 1px solid #eee;
+        }
+
+        .divider-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        /*  پایان استایل سفارشی برای مودال ورود و لاگین */
+
+        /*  استایل سفارشی برای دکمه و دراپ دان لاگین شده */
+        .custom-menu-button {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2); /* پس‌زمینه سفید با شفافیت */
+            padding: 5px 10px; /* پدینگ برای شکل کپسولی */
+            border-radius: 50px; /* ایجاد حالت کپسولی (pill) */
+            border: none;
+        }
+
+        .custom-menu-dots {
+            font-size: 1.5rem;
+            color: white;
+            margin-left: 10px;
+        }
+
+        .custom-profile-icon {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .custom-dropdown-menu {
+            text-align: right; /* متن راست‌چین */
+            border-radius: 10px; /* گوشه‌های گرد */
+            padding: 10px 0; /* فاصله داخلی */
+            margin-top: 280px; /* فاصله از دکمه */
+            left: 0 !important; /* تنظیم موقعیت دراپ‌داون */
+            right: auto !important; /* جلوگیری از باز شدن به سمت راست */
+        }
+
+        .custom-dropdown-item {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            padding: 8px 20px; /* فاصله داخلی گزینه‌ها */
+            color: #000; /* رنگ متن مشکی */
+        }
+
+        .custom-dropdown-item i {
+            margin-left: 10px; /* فاصله آیکون از متن */
+            font-size: 1.2rem;
+        }
+
+        .custom-dropdown-item.logout {
+            color: #ff0000; /* رنگ قرمز برای خروج */
+        }
+
+        .custom-dropdown-item:hover {
+            background-color: #f8f9fa; /* رنگ پس‌زمینه هنگام هاور */
+        }
+
+        /* بازگرداندن فلش دراپ‌داون */
+        .custom-dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid white;
+        }
+
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Fontawesome & Bootstrap Icons CSS -->
+    <link href="{% static 'assets/css/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/fontawesome.css' %}" rel="stylesheet">
+
+
+    <!-- Custom CSS -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<!-- ============================================================== -->
+<!-- Preloader - style you can find in spinners.css -->
+<!-- ============================================================== -->
+<div id="preloader">
+    <div class="preloader"><span></span><span></span></div>
+</div>
+
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper">
+
+    <!-- ============================================================== -->
+    <!-- Top header  -->
+    <!-- ============================================================== -->
+    <!-- Start Navigation -->
+    <nav class="navbar navbar-expand fixed-top navbar-dark bg-transparent p-1 ">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center ps-3" href="#">
+                <div style="background: white; border-radius: 50%; padding: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <img src="{% static 'assets/logo.webp' %}" alt="لوگو" width="65" height="65" class="rounded-circle">
+                </div>
+            </a>
+            {% if user.is_authenticated %}
+                <!-- دکمه مشترک برای نقاط و آیکون -->
+                <button class="custom-menu-button" type="button" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v custom-menu-dots"></i>
+                    <i class="fas fa-user-circle custom-profile-icon"></i>
+                </button>
+                <!-- منوی کشویی -->
+                <ul class="dropdown-menu custom-dropdown-menu">
+                    <li><a class="dropdown-item custom-dropdown-item" href="#"><i
+                            class="fas fa-user"></i>اطلاعات حساب کاربری </a>
+                    </li>
+                    <li><a class="dropdown-item custom-dropdown-item" href="#"><i class="fas fa-info-circle"></i>رزرو
+                        های من
+                        حساب کاربری</a></li>
+                    <li><a class="dropdown-item custom-dropdown-item" href="#"><i class="fas fa-plus-circle"></i>مدیریت
+                        حساب‌ها</a></li>
+                    <li><a class="dropdown-item custom-dropdown-item" href="#"><i class="fas fa-phone"></i>ارتباط با
+                        تنظیمات</a></li>
+                    <li><a class="dropdown-item custom-dropdown-item logout" href="#"><i
+                            class="fas fa-sign-out-alt"></i>خروج از حساب کاربری</a></li>
+                </ul>
+            {% else %}
+                <a href="slider-home.html#" class="btn rounded-pill  py-2 shadow-sm"
+                   style="background-color: #1B3A57"
+                   data-bs-toggle="modal"
+                   data-bs-target="#login"><span class="text-light">ورود | ثبت نام</span></a>
+            {% endif %}
+        </div>
+    </nav>
+    <!-- End Navigation -->
+
+    <!-- ============================================================== -->
+    <!-- Top header  -->
+    <!-- ============================================================== -->
+
+
+    <!-- ============================ Hero Banner  Start================================== -->
+    <div id="myCarousel" class="carousel slide carousel-fade mb-6" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active bg-cover"
+                 style="background-image: url({% static 'assets/img/banner-1.webp' %});"
+                 data-overlay="6">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1 class="h2"> مساجد را مقایسه کن، بهترین را انتخاب کن و سریع رزرو کن!</h1>
+
+                        <a class="btn btn-info rounded-pill px-5 mt-4" href="#">مشاهده مساجد و رزرو سریع</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- دکمه‌های کنترلی -->
+        <!--<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">قبلی</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">بعدی</span>
+        </button>-->
+
+        <!-- دکمه‌های نشانگر (اختیاری) -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"></button>
+        </div>
+    </div>
+    <!-- ============================ Hero Banner End ================================== -->
+
+    <!-- ============================ Hero Search Start ================================== -->
+    <div class="search-explore-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12">
+
+                    <div class="search-wrap with-label overio">
+                        <div class="row">
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                <div class="fliore">
+                                    <div class="rounded-3 me-4 d-inline-flex overflow-hidden">
+                                        <ul class="nav nav-tabs simple-tabs medium border-0 justify-content-center"
+                                            id="tour-pills-tab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active " data-bs-toggle="tab"
+                                                   href="slider-home.html#hotels"><i class="fa fa-hotel ms-2 "></i><span
+                                                        style="color: #1B3A57">مسجد</span></a>
+                                            </li>
+                                            <!--<li class="nav-item">
+                                                <a class="nav-link" data-bs-toggle="tab" href="slider-home.html#flights"><i class="fa-solid fa-jet-fighter ms-2"></i>پرواز</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-bs-toggle="tab" href="slider-home.html#tours"><i class="fa-solid fa-globe ms-2"></i>تور</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-bs-toggle="tab" href="slider-home.html#cabs"><i class="fa-solid fa-car ms-2"></i>خودرو</a>
+                                            </li>-->
+                                        </ul>
+                                    </div>
+
+                                    <div class="tab-content bg-white rounded-pill shadow-wrap p-3">
+                                        <div class="tab-pane show active" id="hotels">
+                                            <div class="row align-items-center gx-2">
+                                                <div class="col-md-8 col-8">
+                                                    <div class="form-group mb-0">
+                                                        <input type="text" class="form-control choosedate rounded-pill"
+                                                               placeholder="جستجوی مساجد خالی بر اساس تاریخ"
+                                                               readonly="readonly">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-4 d-flex justify-content-end">
+                                                    <button type="button"
+                                                            class="btn w-100 fw-medium text-white rounded-pill"
+                                                            style="background-color: #1B3A57;">
+                                                        <i class="fa-solid fa-magnifying-glass ms-2 text-white"></i>
+                                                        جستجو
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================ Hero Search End ================================== -->
+
+    <!-- ============================ Popular Hotels Start ================================== -->
+    <section>
+        <div class="container">
+
+            <div class="row align-items-center justify-content-center">
+                <div class="col-xl-8 col-lg-9 col-md-11 col-sm-12">
+                    <div class="secHeading-wrap text-center mb-5">
+                        <h3>محبوب ترین مساجد</h3>
+                        <p>مقایسه کن و انلاین رزرو کن!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center g-xl-4 g-lg-4 g-md-3 g-4">
+                {% for mosque in mosques %}
+                <!-- Single -->
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                    <div class="card w-100 rounded-5 border shadow-sm">
+                        <div class="flight-thumb-wrapper">
+                            <div class="popFlights-item-overHidden">
+                                <img src="{% static 'assets/2 (1).jpg' %}" class="img-fluid rounded-top"
+                                     alt="">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ mosque.name }}</h5>
+                            <p class="detail text-muted small">
+                                <i class="fa-solid fa-map-marker-alt text-info ms-2"></i>
+                                {{ mosque.address }}
+                            </p>
+                            <div class="touritem-middle position-relative p-3">
+                                <div class="tourist-wooks position-relative mb-3">
+                                    <ul class="activities-flex d-flex flex-wrap gap-2">
+                                        <li>
+                                            <div class="actv-wrap text-center">
+                                                <div class="actv-wrap-ico text-info fs-5"><i
+                                                        class="fa-solid fa-person-chalkboard"></i></div>
+                                                <div class="actv-wrap-caps">سخنران</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="actv-wrap text-center">
+                                                <div class="actv-wrap-ico text-info fs-5"><i
+                                                        class="fa-solid fa-microphone-lines"></i></div>
+                                                <div class="actv-wrap-caps">مداح</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="actv-wrap text-center">
+                                                <div class="actv-wrap-ico text-info fs-5"><i
+                                                        class="fa-solid fa-book-quran"></i></div>
+                                                <div class="actv-wrap-caps">قاری</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="actv-wrap text-center">
+                                                <div class="actv-wrap-ico text-info fs-5"><i class="fas fa-parking"></i>
+                                                </div>
+                                                <div class="actv-wrap-caps">پارکینگ</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <div class="trsms-foots d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="text-dark fw-bold fs-5"><span
+                                            class="text-muted small">قیمت کل: </span>15,000,000 <span
+                                            class="text-success small"> تومان</span></div>
+                                    <div class="text-muted small">قیمت فوق قیمت برگزاری مراسم در سالن اجتماعات میباشد</div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-3">
+                                <a href="#"
+                                   class="btn btn-primary w-100 fw-bold py-2 rounded-pill shadow-sm"
+                                   style="background-color: #007bff; border-color: #007bff;"
+                                   onmouseover="this.style.backgroundColor='#0056b3'"
+                                   onmouseout="this.style.backgroundColor='#007bff'">
+                                    مشاهده جزئیات | رزرو فوری
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </section>
+    <!-- ============================ Popular Hotels Start ================================== -->
+
+    <!-- ============================ Flexible features End ================================== -->
+    <section>
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+
+                <div class="col-xl-5 col-lg-5 col-md-12 position-relative ps-xl-5 ps-lg-4 ps-md-4 pb-xl-5 pb-lg-4 pb-md-4">
+                    <div class="position-relative mb-lg-0 mb-4">
+                        <img src="{% static 'assets/img/img-3.webp' %}"
+                             class="img-fluid rounded-3 position-relative z-1"
+                             alt="">
+                        <div class="position-absolute bottom-0 end-0 z-index-1 mb-4 me-5">
+                        </div>
+                    </div>
+                    <figure class="position-absolute bottom-0 start-0 d-none d-md-block mb-n5 ms-n4">
+                        <svg height="400" class="fill-primary opacity-25" viewBox="0 0 340 340">
+                            <circle cx="194.2" cy="2.2" r="2.2"></circle>
+                            <circle cx="2.2" cy="2.2" r="2.2"></circle>
+                            <circle cx="218.2" cy="2.2" r="2.2"></circle>
+                            <circle cx="26.2" cy="2.2" r="2.2"></circle>
+                            <circle cx="242.2" cy="2.2" r="2.2"></circle>
+                            <circle cx="50.2" cy="2.2" r="2.2"></circle>
+                            <circle cx="266.2" cy="2.2" r="2.2"></circle>
+                            <circle cx="74.2" cy="2.2" r="2.2"></circle>
+                            <circle cx="290.2" cy="2.2" r="2.2"></circle>
+                            <circle cx="98.2" cy="2.2" r="2.2"></circle>
+                            <circle cx="314.2" cy="2.2" r="2.2"></circle>
+                            <circle cx="122.2" cy="2.2" r="2.2"></circle>
+                            <circle cx="338.2" cy="2.2" r="2.2"></circle>
+                            <circle cx="146.2" cy="2.2" r="2.2"></circle>
+                            <circle cx="170.2" cy="2.2" r="2.2"></circle>
+                            <circle cx="194.2" cy="26.2" r="2.2"></circle>
+                            <circle cx="2.2" cy="26.2" r="2.2"></circle>
+                            <circle cx="218.2" cy="26.2" r="2.2"></circle>
+                            <circle cx="26.2" cy="26.2" r="2.2"></circle>
+                            <circle cx="242.2" cy="26.2" r="2.2"></circle>
+                            <circle cx="50.2" cy="26.2" r="2.2"></circle>
+                            <circle cx="266.2" cy="26.2" r="2.2"></circle>
+                            <circle cx="74.2" cy="26.2" r="2.2"></circle>
+                            <circle cx="290.2" cy="26.2" r="2.2"></circle>
+                            <circle cx="98.2" cy="26.2" r="2.2"></circle>
+                            <circle cx="314.2" cy="26.2" r="2.2"></circle>
+                            <circle cx="122.2" cy="26.2" r="2.2"></circle>
+                            <circle cx="338.2" cy="26.2" r="2.2"></circle>
+                            <circle cx="146.2" cy="26.2" r="2.2"></circle>
+                            <circle cx="170.2" cy="26.2" r="2.2"></circle>
+                            <circle cx="194.2" cy="50.2" r="2.2"></circle>
+                            <circle cx="2.2" cy="50.2" r="2.2"></circle>
+                            <circle cx="218.2" cy="50.2" r="2.2"></circle>
+                            <circle cx="26.2" cy="50.2" r="2.2"></circle>
+                            <circle cx="242.2" cy="50.2" r="2.2"></circle>
+                            <circle cx="50.2" cy="50.2" r="2.2"></circle>
+                            <circle cx="266.2" cy="50.2" r="2.2"></circle>
+                            <circle cx="74.2" cy="50.2" r="2.2"></circle>
+                            <circle cx="290.2" cy="50.2" r="2.2"></circle>
+                            <circle cx="98.2" cy="50.2" r="2.2"></circle>
+                            <circle cx="314.2" cy="50.2" r="2.2"></circle>
+                            <circle cx="122.2" cy="50.2" r="2.2"></circle>
+                            <circle cx="338.2" cy="50.2" r="2.2"></circle>
+                            <circle cx="146.2" cy="50.2" r="2.2"></circle>
+                            <circle cx="170.2" cy="50.2" r="2.2"></circle>
+                            <circle cx="194.2" cy="74.2" r="2.2"></circle>
+                            <circle cx="2.2" cy="74.2" r="2.2"></circle>
+                            <circle cx="218.2" cy="74.2" r="2.2"></circle>
+                            <circle cx="26.2" cy="74.2" r="2.2"></circle>
+                            <circle cx="242.2" cy="74.2" r="2.2"></circle>
+                            <circle cx="50.2" cy="74.2" r="2.2"></circle>
+                            <circle cx="266.2" cy="74.2" r="2.2"></circle>
+                            <circle cx="74.2" cy="74.2" r="2.2"></circle>
+                            <circle cx="290.2" cy="74.2" r="2.2"></circle>
+                            <circle cx="98.2" cy="74.2" r="2.2"></circle>
+                            <circle cx="314.2" cy="74.2" r="2.2"></circle>
+                            <circle cx="122.2" cy="74.2" r="2.2"></circle>
+                            <circle cx="338.2" cy="74.2" r="2.2"></circle>
+                            <circle cx="146.2" cy="74.2" r="2.2"></circle>
+                            <circle cx="170.2" cy="74.2" r="2.2"></circle>
+                            <circle cx="194.2" cy="98.2" r="2.2"></circle>
+                            <circle cx="2.2" cy="98.2" r="2.2"></circle>
+                            <circle cx="218.2" cy="98.2" r="2.2"></circle>
+                            <circle cx="26.2" cy="98.2" r="2.2"></circle>
+                            <circle cx="242.2" cy="98.2" r="2.2"></circle>
+                            <circle cx="50.2" cy="98.2" r="2.2"></circle>
+                            <circle cx="266.2" cy="98.2" r="2.2"></circle>
+                            <circle cx="74.2" cy="98.2" r="2.2"></circle>
+                            <circle cx="290.2" cy="98.2" r="2.2"></circle>
+                            <circle cx="98.2" cy="98.2" r="2.2"></circle>
+                            <circle cx="314.2" cy="98.2" r="2.2"></circle>
+                            <circle cx="122.2" cy="98.2" r="2.2"></circle>
+                            <circle cx="338.2" cy="98.2" r="2.2"></circle>
+                            <circle cx="146.2" cy="98.2" r="2.2"></circle>
+                            <circle cx="170.2" cy="98.2" r="2.2"></circle>
+                            <circle cx="194.2" cy="122.2" r="2.2"></circle>
+                            <circle cx="2.2" cy="122.2" r="2.2"></circle>
+                            <circle cx="218.2" cy="122.2" r="2.2"></circle>
+                            <circle cx="26.2" cy="122.2" r="2.2"></circle>
+                            <circle cx="242.2" cy="122.2" r="2.2"></circle>
+                            <circle cx="50.2" cy="122.2" r="2.2"></circle>
+                            <circle cx="266.2" cy="122.2" r="2.2"></circle>
+                            <circle cx="74.2" cy="122.2" r="2.2"></circle>
+                            <circle cx="290.2" cy="122.2" r="2.2"></circle>
+                            <circle cx="98.2" cy="122.2" r="2.2"></circle>
+                            <circle cx="314.2" cy="122.2" r="2.2"></circle>
+                            <circle cx="122.2" cy="122.2" r="2.2"></circle>
+                            <circle cx="338.2" cy="122.2" r="2.2"></circle>
+                            <circle cx="146.2" cy="122.2" r="2.2"></circle>
+                            <circle cx="170.2" cy="122.2" r="2.2"></circle>
+                            <circle cx="194.2" cy="146.2" r="2.2"></circle>
+                            <circle cx="2.2" cy="146.2" r="2.2"></circle>
+                            <circle cx="218.2" cy="146.2" r="2.2"></circle>
+                            <circle cx="26.2" cy="146.2" r="2.2"></circle>
+                            <circle cx="242.2" cy="146.2" r="2.2"></circle>
+                            <circle cx="50.2" cy="146.2" r="2.2"></circle>
+                            <circle cx="266.2" cy="146.2" r="2.2"></circle>
+                            <circle cx="74.2" cy="146.2" r="2.2"></circle>
+                            <circle cx="290.2" cy="146.2" r="2.2"></circle>
+                            <circle cx="98.2" cy="146.2" r="2.2"></circle>
+                            <circle cx="314.2" cy="146.2" r="2.2"></circle>
+                            <circle cx="122.2" cy="146.2" r="2.2"></circle>
+                            <circle cx="338.2" cy="146.2" r="2.2"></circle>
+                            <circle cx="146.2" cy="146.2" r="2.2"></circle>
+                            <circle cx="170.2" cy="146.2" r="2.2"></circle>
+                            <circle cx="194.2" cy="170.2" r="2.2"></circle>
+                            <circle cx="2.2" cy="170.2" r="2.2"></circle>
+                            <circle cx="218.2" cy="170.2" r="2.2"></circle>
+                            <circle cx="26.2" cy="170.2" r="2.2"></circle>
+                            <circle cx="242.2" cy="170.2" r="2.2"></circle>
+                            <circle cx="50.2" cy="170.2" r="2.2"></circle>
+                            <circle cx="266.2" cy="170.2" r="2.2"></circle>
+                            <circle cx="74.2" cy="170.2" r="2.2"></circle>
+                            <circle cx="290.2" cy="170.2" r="2.2"></circle>
+                            <circle cx="98.2" cy="170.2" r="2.2"></circle>
+                            <circle cx="314.2" cy="170.2" r="2.2"></circle>
+                            <circle cx="122.2" cy="170.2" r="2.2"></circle>
+                            <circle cx="338.2" cy="170.2" r="2.2"></circle>
+                            <circle cx="146.2" cy="170.2" r="2.2"></circle>
+                            <circle cx="170.2" cy="170.2" r="2.2"></circle>
+                            <circle cx="194.2" cy="194.2" r="2.2"></circle>
+                            <circle cx="2.2" cy="194.2" r="2.2"></circle>
+                            <circle cx="218.2" cy="194.2" r="2.2"></circle>
+                            <circle cx="26.2" cy="194.2" r="2.2"></circle>
+                            <circle cx="242.2" cy="194.2" r="2.2"></circle>
+                            <circle cx="50.2" cy="194.2" r="2.2"></circle>
+                            <circle cx="266.2" cy="194.2" r="2.2"></circle>
+                            <circle cx="74.2" cy="194.2" r="2.2"></circle>
+                            <circle cx="290.2" cy="194.2" r="2.2"></circle>
+                            <circle cx="98.2" cy="194.2" r="2.2"></circle>
+                            <circle cx="314.2" cy="194.2" r="2.2"></circle>
+                            <circle cx="122.2" cy="194.2" r="2.2"></circle>
+                            <circle cx="338.2" cy="194.2" r="2.2"></circle>
+                            <circle cx="146.2" cy="194.2" r="2.2"></circle>
+                            <circle cx="170.2" cy="194.2" r="2.2"></circle>
+                            <circle cx="194.2" cy="218.2" r="2.2"></circle>
+                            <circle cx="2.2" cy="218.2" r="2.2"></circle>
+                            <circle cx="218.2" cy="218.2" r="2.2"></circle>
+                            <circle cx="26.2" cy="218.2" r="2.2"></circle>
+                            <circle cx="242.2" cy="218.2" r="2.2"></circle>
+                            <circle cx="50.2" cy="218.2" r="2.2"></circle>
+                            <circle cx="266.2" cy="218.2" r="2.2"></circle>
+                            <circle cx="74.2" cy="218.2" r="2.2"></circle>
+                            <circle cx="290.2" cy="218.2" r="2.2"></circle>
+                            <circle cx="98.2" cy="218.2" r="2.2"></circle>
+                            <circle cx="314.2" cy="218.2" r="2.2"></circle>
+                            <circle cx="122.2" cy="218.2" r="2.2"></circle>
+                            <circle cx="338.2" cy="218.2" r="2.2"></circle>
+                            <circle cx="146.2" cy="218.2" r="2.2"></circle>
+                            <circle cx="170.2" cy="218.2" r="2.2"></circle>
+                            <circle cx="194.2" cy="242.2" r="2.2"></circle>
+                            <circle cx="2.2" cy="242.2" r="2.2"></circle>
+                            <circle cx="218.2" cy="242.2" r="2.2"></circle>
+                            <circle cx="26.2" cy="242.2" r="2.2"></circle>
+                            <circle cx="242.2" cy="242.2" r="2.2"></circle>
+                            <circle cx="50.2" cy="242.2" r="2.2"></circle>
+                            <circle cx="266.2" cy="242.2" r="2.2"></circle>
+                            <circle cx="74.2" cy="242.2" r="2.2"></circle>
+                            <circle cx="290.2" cy="242.2" r="2.2"></circle>
+                            <circle cx="98.2" cy="242.2" r="2.2"></circle>
+                            <circle cx="314.2" cy="242.2" r="2.2"></circle>
+                            <circle cx="122.2" cy="242.2" r="2.2"></circle>
+                            <circle cx="338.2" cy="242.2" r="2.2"></circle>
+                            <circle cx="146.2" cy="242.2" r="2.2"></circle>
+                            <circle cx="170.2" cy="242.2" r="2.2"></circle>
+                            <circle cx="194.2" cy="266.2" r="2.2"></circle>
+                            <circle cx="2.2" cy="266.2" r="2.2"></circle>
+                            <circle cx="218.2" cy="266.2" r="2.2"></circle>
+                            <circle cx="26.2" cy="266.2" r="2.2"></circle>
+                            <circle cx="242.2" cy="266.2" r="2.2"></circle>
+                            <circle cx="50.2" cy="266.2" r="2.2"></circle>
+                            <circle cx="266.2" cy="266.2" r="2.2"></circle>
+                            <circle cx="74.2" cy="266.2" r="2.2"></circle>
+                            <circle cx="290.2" cy="266.2" r="2.2"></circle>
+                            <circle cx="98.2" cy="266.2" r="2.2"></circle>
+                            <circle cx="314.2" cy="266.2" r="2.2"></circle>
+                            <circle cx="122.2" cy="266.2" r="2.2"></circle>
+                            <circle cx="338.2" cy="266.2" r="2.2"></circle>
+                            <circle cx="146.2" cy="266.2" r="2.2"></circle>
+                            <circle cx="170.2" cy="266.2" r="2.2"></circle>
+                            <circle cx="194.2" cy="290.2" r="2.2"></circle>
+                            <circle cx="2.2" cy="290.2" r="2.2"></circle>
+                            <circle cx="218.2" cy="290.2" r="2.2"></circle>
+                            <circle cx="26.2" cy="290.2" r="2.2"></circle>
+                            <circle cx="242.2" cy="290.2" r="2.2"></circle>
+                            <circle cx="50.2" cy="290.2" r="2.2"></circle>
+                            <circle cx="266.2" cy="290.2" r="2.2"></circle>
+                            <circle cx="74.2" cy="290.2" r="2.2"></circle>
+                            <circle cx="290.2" cy="290.2" r="2.2"></circle>
+                            <circle cx="98.2" cy="290.2" r="2.2"></circle>
+                            <circle cx="314.2" cy="290.2" r="2.2"></circle>
+                            <circle cx="122.2" cy="290.2" r="2.2"></circle>
+                            <circle cx="338.2" cy="290.2" r="2.2"></circle>
+                            <circle cx="146.2" cy="290.2" r="2.2"></circle>
+                            <circle cx="170.2" cy="290.2" r="2.2"></circle>
+                            <circle cx="194.2" cy="314.2" r="2.2"></circle>
+                            <circle cx="2.2" cy="314.2" r="2.2"></circle>
+                            <circle cx="218.2" cy="314.2" r="2.2"></circle>
+                            <circle cx="26.2" cy="314.2" r="2.2"></circle>
+                            <circle cx="242.2" cy="314.2" r="2.2"></circle>
+                            <circle cx="50.2" cy="314.2" r="2.2"></circle>
+                            <circle cx="266.2" cy="314.2" r="2.2"></circle>
+                            <circle cx="74.2" cy="314.2" r="2.2"></circle>
+                            <circle cx="290.2" cy="314.2" r="2.2"></circle>
+                            <circle cx="98.2" cy="314.2" r="2.2"></circle>
+                            <circle cx="314.2" cy="314.2" r="2.2"></circle>
+                            <circle cx="122.2" cy="314.2" r="2.2"></circle>
+                            <circle cx="338.2" cy="314.2" r="2.2"></circle>
+                            <circle cx="146.2" cy="314.2" r="2.2"></circle>
+                            <circle cx="170.2" cy="314.2" r="2.2"></circle>
+                            <circle cx="194.2" cy="338.2" r="2.2"></circle>
+                            <circle cx="2.2" cy="338.2" r="2.2"></circle>
+                            <circle cx="218.2" cy="338.2" r="2.2"></circle>
+                            <circle cx="26.2" cy="338.2" r="2.2"></circle>
+                            <circle cx="242.2" cy="338.2" r="2.2"></circle>
+                            <circle cx="50.2" cy="338.2" r="2.2"></circle>
+                            <circle cx="266.2" cy="338.2" r="2.2"></circle>
+                            <circle cx="74.2" cy="338.2" r="2.2"></circle>
+                            <circle cx="290.2" cy="338.2" r="2.2"></circle>
+                            <circle cx="98.2" cy="338.2" r="2.2"></circle>
+                            <circle cx="314.2" cy="338.2" r="2.2"></circle>
+                            <circle cx="122.2" cy="338.2" r="2.2"></circle>
+                            <circle cx="338.2" cy="338.2" r="2.2"></circle>
+                            <circle cx="146.2" cy="338.2" r="2.2"></circle>
+                            <circle cx="170.2" cy="338.2" r="2.2"></circle>
+                        </svg>
+                    </figure>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-md-12">
+                    <div class="row gy-xl-5 g-4">
+
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                            <div class="fbxer-wraps">
+                                <div class="fbxerWraps-icons mb-3">
+                                    <div class="square--70 circle bg-light-primary"><i
+                                            class="fa-solid fa-sliders fa-2x"></i>
+                                    </div>
+                                </div>
+                                <div class="fbxerWraps-caps">
+                                    <h5 class="fw-bold fs-6">مقایسه سریع و انتخاب هوشمند</h5>
+                                    <p class="fw-light fs-6 m-0">با مشاهده جزئیات مساجد، امکانات و هزینه‌ها، بهترین
+                                        گزینه را برای مراسم خود انتخاب کنید.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                            <div class="fbxer-wraps">
+                                <div class="fbxerWraps-icons mb-3">
+                                    <div class="square--70 circle bg-light-info"><i class="fa-solid fa-check fa-2x"></i>
+                                        <!-- آیکون سپر با علامت تیک -->
+                                    </div>
+                                </div>
+                                <div class="fbxerWraps-caps">
+                                    <h5 class="fw-bold fs-6">رزرو مطمئن و شفاف</h5>
+                                    <p class="fw-light fs-6 m-0">تمامی قیمت‌ها و شرایط به‌صورت شفاف نمایش داده می‌شوند،
+                                        بدون هزینه‌های پنهان!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                            <div class="fbxer-wraps">
+                                <div class="fbxerWraps-icons mb-3">
+                                    <div class="square--70 circle bg-light-success"><i
+                                            class="fa-solid fa-headset fa-2x"></i>
+                                    </div>
+                                </div>
+                                <div class="fbxerWraps-caps">
+                                    <h5 class="fw-bold fs-6"> پشتیبانی ۲۴/۷</h5>
+                                    <p class="fw-light fs-6 m-0">هر زمان که نیاز به راهنمایی داشتید، تیم پشتیبانی ما
+                                        آماده کمک به شماست.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ============================ Flexible features End ================================== -->
+
+    <!-- ============================ Booking Title ================================== -->
+    <section class="bg-cover position-relative" style="background:#dce0e8">
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="col-xl-12 col-lg-12 col-md-12 mt-4">
+                    <div class="row mb-4">
+                        <div class="col-12 text-center">
+                            <h3>پرسش های متداول</h3>
+                        </div>
+                    </div>
+
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+
+                        <div class="accordion-item border rounded-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                        aria-controls="flush-collapseTwo">
+                                    چگونه می‌توانم مسجدی را برای مراسم ختم یا همایش خود رزرو کنم؟
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">برای رزرو مسجد به صورت انلاین، کافی است وارد سامانه شوید،
+                                    مسجد مورد نظر را جست‌وجو کرده، مسجد و سالن یا صحن دلخواه را انتخاب و پس از تعیین
+                                    تاریخ و ساعت، به صورت قطعی و سریع رزرو کنید.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseFive2" aria-expanded="false"
+                                        aria-controls="flush-collapseFive2">
+                                    آیا می‌توانم قبل از رزرو، از خالی بودن سالن مسجد در تاریخ موردنظر مطمئن شوم؟
+                                </button>
+                            </h2>
+                            <div id="flush-collapseFive2" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">بله، در سامانه امکان بررسی وضعیت در دسترس بودن سالن‌ها فراهم
+                                    شده است. شما می‌توانید تاریخ مراسم خود را وارد کنید و ببینید که در آن تاریخ، سالن
+                                    موردنظر آزاد است یا قبلاً رزرو شده. این ویژگی به شما کمک می‌کند بهترین زمان ممکن را
+                                    برای رزرو انتخاب کنید
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseFive3" aria-expanded="false"
+                                        aria-controls="flush-collapseFive3">
+                                    یا سامانه از هم‌پوشانی زمان‌های رزرو جلوگیری می‌کند؟
+                                </button>
+                            </h2>
+                            <div id="flush-collapseFive3" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">بله، سامانه رزرو مسجد به صورت هوشمند از ثبت رزرو در
+                                    زمان‌هایی که قبلاً توسط دیگران رزرو شده جلوگیری می‌کند، تا با خیال راحت بتوانید رزرو
+                                    خود را انجام دهید
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                        aria-controls="flush-collapseThree">
+                                    قیمت مسجد یا سالن اجتماعات برای مراسم ختم یا همایش به چه صورت محاسبه میشود؟
+                                </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">هزینه رزرو بر اساس مدت زمان استفاده، نوع سالن و امکانات
+                                    انتخابی محاسبه می‌شود. قیمت‌ها در صفحه هر مسجد مشخص شده‌اند.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                        aria-controls="flush-collapseFour">
+                                    آیا سامانه شامل مساجد سراسر کشور می‌شود؟
+                                </button>
+                            </h2>
+                            <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body"> در حال حاضر، سامانه شامل مساجد منتخب در شهر تهران از قبیل:
+                                    مسجد جامع امیر المومنین (ع) واقع در مرزداران ،مسجد جامع امام سجاد (ع) واقع در اشرفی
+                                    اصفهانی و مسجد جامع نظام مافی است و به‌تدریج به تعداد مساجد افزوده می‌شود.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseFive" aria-expanded="false"
+                                        aria-controls="flush-collapseFive">
+                                    آیا برای استفاده از سامانه نیاز به ثبت‌نام دارم؟
+                                </button>
+                            </h2>
+                            <div id="flush-collapseFive" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">برای مشاهده اطلاعات عمومی نیازی به ثبت‌نام نیست، اما برای
+                                    رزرو سالن‌ها و مدیریت رزروهای خود، باید در سامانه ثبت‌نام کنید.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+</div>
+</div>
+</section>
+<!-- ============================ Booking Title ================================== -->
+
+<!-- ============================ Our Reviews Start ================================== -->
+<!--    <section class="gray-simple bg-cover" style="background:url(assets/img/reviewbg.png)no-repeat;">-->
+<!--        <div class="container">-->
+
+<!--            <div class="row align-items-center justify-content-center">-->
+<!--                <div class="col-xl-8 col-lg-9 col-md-11 col-sm-12">-->
+<!--                    <div class="secHeading-wrap text-center mb-5">-->
+<!--                        <h3>دیدگاه محبت آمیز کاربران</h3>-->
+<!--                        <p>با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="row align-items-center justify-content-center g-xl-4 g-lg-4 g-md-4 g-3">-->
+
+<!--                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">-->
+<!--                    <div class="card border-0 rounded-3">-->
+<!--                        <div class="card-body">-->
+<!--                            <div class="position-absolute top-0 start-0 mt-3 ms-3"><span-->
+<!--                                    class="square&#45;&#45;40 circle text-primary bg-light-primary"><i-->
+<!--                                    class="fa-solid fa-quote-right"></i></span></div>-->
+<!--                            <div class="d-flex align-items-center flex-thumbes">-->
+<!--                                <div class="revws-pic"><img src="assets/img/team-1.jpg" class="img-fluid rounded-2"-->
+<!--                                                            width="80" alt="">-->
+<!--                                </div>-->
+<!--                                <div class="revws-caps pe-3">-->
+<!--                                    <h6 class="fw-bold fs-6 m-0">علی حسینی</h6>-->
+<!--                                    <p class="text-muted-2 text-md m-0">ایالات متحده</p>-->
+<!--                                    <div class="d-flex align-items-center justify-content-start">-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="revws-desc mt-3">-->
+<!--                                <p class="m-0 text-md">چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم-->
+<!--                                    است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای-->
+<!--                                    کاربردی می باشد.</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">-->
+<!--                    <div class="card border-0 rounded-3">-->
+<!--                        <div class="card-body">-->
+<!--                            <div class="position-absolute top-0 start-0 mt-3 ms-3"><span-->
+<!--                                    class="square&#45;&#45;40 circle text-primary bg-light-primary"><i-->
+<!--                                    class="fa-solid fa-quote-right"></i></span></div>-->
+<!--                            <div class="d-flex align-items-center flex-thumbes">-->
+<!--                                <div class="revws-pic"><img src="assets/img/team-2.jpg" class="img-fluid rounded-2"-->
+<!--                                                            width="80" alt="">-->
+<!--                                </div>-->
+<!--                                <div class="revws-caps pe-3">-->
+<!--                                    <h6 class="fw-bold fs-6 m-0">فاطمه علیزاده</h6>-->
+<!--                                    <p class="text-muted-2 text-md m-0">پاریس</p>-->
+<!--                                    <div class="d-flex align-items-center justify-content-start">-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="revws-desc mt-3">-->
+<!--                                <p class="m-0 text-md">چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم-->
+<!--                                    است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای-->
+<!--                                    کاربردی می باشد.</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">-->
+<!--                    <div class="card border-0 rounded-3">-->
+<!--                        <div class="card-body">-->
+<!--                            <div class="position-absolute top-0 start-0 mt-3 ms-3"><span-->
+<!--                                    class="square&#45;&#45;40 circle text-primary bg-light-primary"><i-->
+<!--                                    class="fa-solid fa-quote-right"></i></span></div>-->
+<!--                            <div class="d-flex align-items-center flex-thumbes">-->
+<!--                                <div class="revws-pic"><img src="assets/img/team-3.jpg" class="img-fluid rounded-2"-->
+<!--                                                            width="80" alt="">-->
+<!--                                </div>-->
+<!--                                <div class="revws-caps pe-3">-->
+<!--                                    <h6 class="fw-bold fs-6 m-0">مهرداد افخمی</h6>-->
+<!--                                    <p class="text-muted-2 text-md m-0">کانادا</p>-->
+<!--                                    <div class="d-flex align-items-center justify-content-start">-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="revws-desc mt-3">-->
+<!--                                <p class="m-0 text-md">چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم-->
+<!--                                    است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای-->
+<!--                                    کاربردی می باشد.</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">-->
+<!--                    <div class="card border-0 rounded-3">-->
+<!--                        <div class="card-body">-->
+<!--                            <div class="position-absolute top-0 start-0 mt-3 ms-3"><span-->
+<!--                                    class="square&#45;&#45;40 circle text-primary bg-light-primary"><i-->
+<!--                                    class="fa-solid fa-quote-right"></i></span></div>-->
+<!--                            <div class="d-flex align-items-center flex-thumbes">-->
+<!--                                <div class="revws-pic"><img src="assets/img/team-4.jpg" class="img-fluid rounded-2"-->
+<!--                                                            width="80" alt="">-->
+<!--                                </div>-->
+<!--                                <div class="revws-caps pe-3">-->
+<!--                                    <h6 class="fw-bold fs-6 m-0">نیلوفر احمدی</h6>-->
+<!--                                    <p class="text-muted-2 text-md m-0">فرانسه</p>-->
+<!--                                    <div class="d-flex align-items-center justify-content-start">-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="revws-desc mt-3">-->
+<!--                                <p class="m-0 text-md">چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم-->
+<!--                                    است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای-->
+<!--                                    کاربردی می باشد.</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">-->
+<!--                    <div class="card border-0 rounded-3">-->
+<!--                        <div class="card-body">-->
+<!--                            <div class="position-absolute top-0 start-0 mt-3 ms-3"><span-->
+<!--                                    class="square&#45;&#45;40 circle text-primary bg-light-primary"><i-->
+<!--                                    class="fa-solid fa-quote-right"></i></span></div>-->
+<!--                            <div class="d-flex align-items-center flex-thumbes">-->
+<!--                                <div class="revws-pic"><img src="assets/img/team-5.jpg" class="img-fluid rounded-2"-->
+<!--                                                            width="80" alt="">-->
+<!--                                </div>-->
+<!--                                <div class="revws-caps pe-3">-->
+<!--                                    <h6 class="fw-bold fs-6 m-0">محسن مرادی</h6>-->
+<!--                                    <p class="text-muted-2 text-md m-0">استانبول</p>-->
+<!--                                    <div class="d-flex align-items-center justify-content-start">-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                        <span class="ms-1 text-xs text-warning"><i class="fa-solid fa-star"></i></span>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="revws-desc mt-3">-->
+<!--                                <p class="m-0 text-md">چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم-->
+<!--                                    است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای-->
+<!--                                    کاربردی می باشد.</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+<!-- ============================ Our Reviews End ================================== -->
+
+
+<!-- ================================ Article Section Start ======================================= -->
+<!--<section class="pt-0">
+    <div class="container">
+
+        <div class="row align-items-center justify-content-center">
+            <div class="col-xl-8 col-lg-9 col-md-11 col-sm-12">
+                <div class="secHeading-wrap text-center mb-5">
+                    <h3>مجله گردشگری</h3>
+                    <p>با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center g-4">
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <div class="blogGrid-wrap d-flex flex-column h-100">
+                    <div class="blogGrid-pics">
+                        <a href="slider-home.html#" class="d-block"><img src="assets/img/blog-1.jpg"
+                                                                         class="img-fluid rounded"
+                                                                         alt=""></a>
+                    </div>
+                    <div class="blogGrid-caps pt-3">
+                        <div class="d-flex align-items-center mb-1"><span
+                                class="label text-success bg-light-success">گردشگری</span></div>
+                        <h4 class="fw-bold fs-6 lh-base"><a href="slider-home.html#" class="text-dark">هر آنچه باید
+                            درباره فرودگاه بین المللی دبی بدانید!</a></h4>
+                        <p class="mb-3">چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
+                            شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می
+                            باشد...</p>
+                        <a class="text-primary fw-medium" href="slider-home.html#">بیشتر بخوانید<i
+                                class="fa-solid fa-arrow-trend-up me-2"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <div class="blogGrid-wrap d-flex flex-column h-100">
+                    <div class="blogGrid-pics">
+                        <a href="slider-home.html#" class="d-block"><img src="assets/img/blog-2.jpg"
+                                                                         class="img-fluid rounded"
+                                                                         alt=""></a>
+                    </div>
+                    <div class="blogGrid-caps pt-3">
+                        <div class="d-flex align-items-center mb-1"><span
+                                class="label text-success bg-light-success">جاهای دیدنی</span></div>
+                        <h4 class="fw-bold fs-6 lh-base"><a href="slider-home.html#" class="text-dark">جا‌های دیدنی
+                            متل قو | شهر ساحلی محبوب شمال</a></h4>
+                        <p class="mb-3">چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
+                            شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می
+                            باشد...</p>
+                        <a class="text-primary fw-medium" href="slider-home.html#">بیشتر بخوانید<i
+                                class="fa-solid fa-arrow-trend-up me-2"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <div class="blogGrid-wrap d-flex flex-column h-100">
+                    <div class="blogGrid-pics">
+                        <a href="slider-home.html#" class="d-block"><img src="assets/img/blog-3.jpg"
+                                                                         class="img-fluid rounded"
+                                                                         alt=""></a>
+                    </div>
+                    <div class="blogGrid-caps pt-3">
+                        <div class="d-flex align-items-center mb-1"><span
+                                class="label text-success bg-light-success">اقامتگاه</span></div>
+                        <h4 class="fw-bold fs-6 lh-base"><a href="slider-home.html#" class="text-dark">آشنایی با
+                            واحد پول کشورها | از آسیا تا آمریکای جنوبی</a></h4>
+                        <p class="mb-3">چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
+                            شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می
+                            باشد...</p>
+                        <a class="text-primary fw-medium" href="slider-home.html#">بیشتر بخوانید<i
+                                class="fa-solid fa-arrow-trend-up me-2"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>-->
+<!-- ================================ Article Section Start ======================================= -->
+
+
+<!-- ============================ Footer Start ================================== -->
+<footer class="footer skin-dark-footer">
+    <div>
+        <div class="container">
+            <div class="row">
+
+                {#                    <div class="col-lg-3 col-md-4">#}
+                {#                        <div class="footer-widget">#}
+                {#                            <div class="d-flex align-items-start flex-column mb-3">#}
+                {#                                <div class="d-inline-block"><img src="assets/img/logo-light.png" class="img-fluid"#}
+                {#                                                                 width="160"#}
+                {#                                                                 alt="Footer Logo"></div>#}
+                {#                            </div>#}
+                {#                            <div class="footer-add ps-xl-3">#}
+                {#                                <p>ما با شادی فراوان رویای شما را زیباتر و لذت بخش تر می کنیم.</p>#}
+                {#                            </div>#}
+                {#                            <div class="foot-socials">#}
+                {#                                <ul>#}
+                {#                                    <li><a href="JavaScript:Void(0);"><i class="fa-brands fa-facebook"></i></a></li>#}
+                {#                                    <li><a href="JavaScript:Void(0);"><i class="fa-brands fa-linkedin"></i></a></li>#}
+                {#                                    <li><a href="JavaScript:Void(0);"><i class="fa-brands fa-google-plus"></i></a></li>#}
+                {#                                    <li><a href="JavaScript:Void(0);"><i class="fa-brands fa-twitter"></i></a></li>#}
+                {#                                    <li><a href="JavaScript:Void(0);"><i class="fa-brands fa-dribbble"></i></a></li>#}
+                {#                                </ul>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                    <div class="col-lg-2 col-md-4">#}
+                {#                        <div class="footer-widget">#}
+                {#                            <h4 class="widget-title">لینک های سریع</h4>#}
+                {#                            <ul class="footer-menu">#}
+                {#                                <li><a href="JavaScript:Void(0);">درباره ما</a></li>#}
+                {#                                <li><a href="JavaScript:Void(0);">مجله گردشگری</a></li>#}
+                {#                                <li><a href="JavaScript:Void(0);">بیمه مسافرتی</a></li>#}
+                {#                                <li><a href="JavaScript:Void(0);">قوانین سایت</a></li>#}
+                {#                                <li><a href="JavaScript:Void(0);">تماس با ما</a></li>#}
+                {#                                <li><a href="JavaScript:Void(0);">فرصت های شغلی</a></li>#}
+                {#                            </ul>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {##}
+                {#                    <div class="col-lg-2 col-md-4">#}
+                {#                        <div class="footer-widget">#}
+                {#                            <h4 class="widget-title">خدمات پرواز و هتل</h4>#}
+                {#                            <ul class="footer-menu">#}
+                {#                                <li><a href="JavaScript:Void(0);">خرید بلیط هواپیما</a></li>#}
+                {#                                <li><a href="JavaScript:Void(0);">رزرو هتل</a></li>#}
+                {#                                <li><a href="JavaScript:Void(0);">درخواست ویزا</a></li>#}
+                {#                                <li><a href="JavaScript:Void(0);">رزرو اقامتگاه</a></li>#}
+                {#                                <li><a href="JavaScript:Void(0);">بلیط چارتر</a></li>#}
+                {#                                <li><a href="JavaScript:Void(0);">پشتیبانی</a></li>#}
+                {#                            </ul>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {##}
+                {#                    <div class="col-lg-2 col-md-6">#}
+                {#                        <div class="footer-widget">#}
+                {#                            <h4 class="widget-title">نحوه رزرو اقامتگاه</h4>#}
+                {#                            <ul class="footer-menu">#}
+                {#                                <li><a href="JavaScript:Void(0);">راهنمای رزرو اقامتگاه</a></li>#}
+                {#                                <li><a href="JavaScript:Void(0);">همکاران سازمانی</a></li>#}
+                {#                                <li><a href="JavaScript:Void(0);">تماس با ما</a></li>#}
+                {#                                <li><a href="JavaScript:Void(0);">پرسش های متداول</a></li>#}
+                {#                                <li><a href="JavaScript:Void(0);">شرایط لغو</a></li>#}
+                {#                            </ul>#}
+                {#                        </div>#}
+                {#                    </div>#}
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h4 class="widget-title">با خیال راحت به ما اعتماد کنید</h4>
+                        <div class="pmt-wrap">
+                            <a referrerpolicy='origin' target='_blank'
+                               href='https://trustseal.enamad.ir/?id=606663&Code=OnbcmOuYFTlKvZZ2sMQurAqG8TiYNAeS'><img
+                                    referrerpolicy='origin'
+                                    src='https://trustseal.enamad.ir/logo.aspx?id=606663&Code=OnbcmOuYFTlKvZZ2sMQurAqG8TiYNAeS'
+                                    alt='' style='cursor:pointer' code='OnbcmOuYFTlKvZZ2sMQurAqG8TiYNAeS'></a>
+                        </div>
+                        {#                            <div class="our-prtwrap mt-4">#}
+                        {#                                <div class="prtn-title">#}
+                        {#                                    <p class="text-muted-2 fw-medium">همکاران ما</p>#}
+                        {#                                </div>#}
+                        {#                                <div class="prtn-thumbs d-flex align-items-center justify-content-start">#}
+                        {#                                    <div class="pmt-wrap ps-4">#}
+                        {#                                        <img src="assets/img/mytrip.png" class="img-fluid" alt="">#}
+                        {#                                    </div>#}
+                        {#                                    <div class="pmt-wrap ps-4">#}
+                        {#                                        <img src="assets/img/tripadv.png" class="img-fluid" alt="">#}
+                        {#                                    </div>#}
+                        {#                                    <div class="pmt-wrap ps-4">#}
+                        {#                                        <img src="assets/img/goibibo.png" class="img-fluid" alt="">#}
+                        {#                                    </div>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom border-top">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col">
+                    <p class="mb-0 text-center"> کلیه حقوق این سایت محفوظ و متعلق به کدوم جا است.</p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- ============================ Footer End ================================== -->
+
+<!-- Log In Modal -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginmodal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content border-0 shadow-lg">
+            <!-- هدر مودال -->
+            <div class="modal-header border-0 pb-0">
+                <div class="w-100 text-center">
+                    <h4 class="modal-title fw-bold text-primary">به سامانه کدوم جا خوش آمدید</h4>
+                    <p class="small text-muted mt-1">لطفاً برای ادامه وارد شوید یا ثبت‌نام کنید</p>
+                </div>
+                <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+
+            <!-- بدنه مودال -->
+            <div class="modal-body pt-0">
+                <!-- تب‌های ورود/ثبت‌نام -->
+                <ul class="nav nav-pills nav-justified mb-4" id="authTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active fw-bold" id="login-tab" data-bs-toggle="pill"
+                                data-bs-target="#login-tab-pane" type="button" role="tab">
+                            <i class="fas fa-sign-in-alt me-2"></i>ورود
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link fw-bold" id="register-tab" data-bs-toggle="pill"
+                                data-bs-target="#register-tab-pane" type="button" role="tab">
+                            <i class="fas fa-user-plus me-2"></i>ثبت‌نام
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <!-- تب ورود -->
+                    <div class="tab-pane fade show active" id="login-tab-pane" role="tabpanel"
+                         aria-labelledby="login-tab">
+                        <form method="post" action="{% url 'my_profile:log_in' %}">
+                            {% csrf_token %}
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="loginUsername "
+                                       placeholder="شماره موبایل" name="username">
+                                <label for="loginUsername"> شماره موبایل</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="loginPassword"
+                                       placeholder="رمز عبور" name="password">
+                                <label for="loginPassword">رمز عبور</label>
+                                <a href="#" class="small text-primary float-start mt-1">رمز عبور را فراموش
+                                    کرده‌ام؟</a>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="rememberLogin">
+                                <label class="form-check-label" for="rememberLogin">مرا به خاطر بسپار</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">ورود به حساب</button>
+                        </form>
+                    </div>
+
+                    <!-- تب ثبت‌نام -->
+                    <div class="tab-pane fade" id="register-tab-pane" role="tabpanel"
+                         aria-labelledby="register-tab">
+                        <form action="{% url 'my_profile:Register' %}" method="post">
+                            {% csrf_token %}
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="registerName" placeholder="نام "
+                                       name="first_name">
+                                <label for="registerName">نام </label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="registerName"
+                                       placeholder="نام خانوادگی " name="last_name">
+                                <label for="registerName">نام خانوادگی </label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control" id="registerPhone"
+                                       placeholder="شماره موبایل" name="phone_number">
+                                <label for="registerPhone">شماره موبایل</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="registerPassword"
+                                       placeholder="رمز عبور" name="password1">
+                                <label for="registerPassword">رمز عبور</label>
+                            </div>
+                            {#                                <div class="form-check mb-3">#}
+                            {#                                    <input class="form-check-input" type="checkbox" id="agreeTerms">#}
+                            {#                                    <label class="form-check-label" for="agreeTerms">با <a href="#"#}
+                            {#                                                                                           class="text-primary">قوانین</a>#}
+                            {#                                        موافقم</label>#}
+                            {#                                </div>#}
+                            <button type="submit" class="btn btn-success w-100 py-2 fw-bold">ثبت‌نام کنید</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ورود با شبکه‌های اجتماعی -->
+                <div class="text-center my-4">
+                    <div class="divider">
+                        <span class="divider-text bg-white px-3 text-muted">یا با</span>
+                    </div>
+                    <div class="d-flex justify-content-center gap-3 mt-3">
+                        <a href="#" class="btn btn-outline-primary rounded-circle social-btn">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-primary rounded-circle social-btn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-primary rounded-circle social-btn">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- فوتر مودال -->
+            <div class="modal-footer border-0 justify-content-center">
+                <p class="mb-0">با ورود یا ثبت‌نام، با <a href="#" class="text-primary">قوانین</a> موافقت می‌کنید
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+<!-- Choose Currency Modal -->
+<div class="modal modal-lg fade" id="currencyModal" tabindex="-1" aria-labelledby="currenyModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title fs-6" id="currenyModalLabel">انتخاب واحد ارز</h4>
+                <a href="slider-home.html#" class="text-muted fs-4" data-bs-dismiss="modal" aria-label="Close"><i
+                        class="fa-solid fa-square-xmark"></i></a>
+            </div>
+            <div class="modal-body">
+                <div class="allCurrencylist">
+
+                    <div class="suggestedCurrencylist-wrap mb-4">
+                        <div class="d-inline-block mb-0 ps-3">
+                            <h5 class="fs-6 fw-bold">ارزهای پیشنهادی</h5>
+                        </div>
+                        <div class="suggestedCurrencylists">
+                            <ul
+                                    class="row align-items-center justify-content-start row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-2 gy-2 gx-3 m-0 p-0">
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">ایالات متحده دلار</div>
+                                        <div class="text-muted-2 text-md text-uppercase">USD</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">سودان پوند</div>
+                                        <div class="text-muted-2 text-md text-uppercase">GBP</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency active" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">هندوستان روپیه</div>
+                                        <div class="text-muted-2 text-md text-uppercase">Inr</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">کلمبیا پزوی</div>
+                                        <div class="text-muted-2 text-md text-uppercase">EUR</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">استرالیا دلار</div>
+                                        <div class="text-muted-2 text-md text-uppercase">aud</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">مراکش درهم</div>
+                                        <div class="text-muted-2 text-md text-uppercase">thb</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="suggestedCurrencylist-wrap">
+                        <div class="d-inline-block mb-0 ps-3">
+                            <h5 class="fs-6 fw-bold">همه ارزها</h5>
+                        </div>
+                        <div class="suggestedCurrencylists">
+                            <ul
+                                    class="row align-items-center justify-content-start row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-2 gy-2 gx-3 m-0 p-0">
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">دلار ایالات متحده</div>
+                                        <div class="text-muted-2 text-md text-uppercase">USD</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">پوند لبنان</div>
+                                        <div class="text-muted-2 text-md text-uppercase">GBP</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">روپیه اندونزی</div>
+                                        <div class="text-muted-2 text-md text-uppercase">EUR</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">وون کره جنوبی</div>
+                                        <div class="text-muted-2 text-md text-uppercase">Inr</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">درهم مراکش</div>
+                                        <div class="text-muted-2 text-md text-uppercase">aud</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">دلار تایوان</div>
+                                        <div class="text-muted-2 text-md text-uppercase">thb</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">ریال یمن</div>
+                                        <div class="text-muted-2 text-md text-uppercase">USD</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">پزوی شیلی</div>
+                                        <div class="text-muted-2 text-md text-uppercase">GBP</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">کانادا دلار</div>
+                                        <div class="text-muted-2 text-md text-uppercase">EUR</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">دلار باهاماس</div>
+                                        <div class="text-muted-2 text-md text-uppercase">Inr</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">کونا کرواسی</div>
+                                        <div class="text-muted-2 text-md text-uppercase">aud</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">سامانی تاجیکستان</div>
+                                        <div class="text-muted-2 text-md text-uppercase">thb</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">پوند سودان</div>
+                                        <div class="text-muted-2 text-md text-uppercase">USD</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">روپیه سیشل</div>
+                                        <div class="text-muted-2 text-md text-uppercase">GBP</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">دینار صربستان</div>
+                                        <div class="text-muted-2 text-md text-uppercase">EUR</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">فرانک رواندا</div>
+                                        <div class="text-muted-2 text-md text-uppercase">Inr</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">دینار صربستان</div>
+                                        <div class="text-muted-2 text-md text-uppercase">aud</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">لئو رومانی</div>
+                                        <div class="text-muted-2 text-md text-uppercase">thb</div>
+                                    </a>
+                                </li>
+                                <li class="col">
+                                    <a class="selectCurrency" href="slider-home.html#">
+                                        <div class="text-dark text-md fw-medium">سنگاپور دلار</div>
+                                        <div class="text-muted-2 text-md text-uppercase">thb</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Video Modal -->
+<div class="modal fade" id="popup-video" tabindex="-1" role="dialog" aria-labelledby="popupvideo"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" id="popupvideo">
+            <iframe class="embed-responsive-item" style="width: 100%; height: 480px;"
+                    src="https://www.aparat.com/video/video/embed/videohash/trxOV/vt/frame" frameborder="0"
+                    allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+<!-- End Video Modal -->
+
+<a id="back2Top" class="top-scroll" title="Back to top" href="slider-home.html#"><i class="fa-solid fa-sort-up"></i></a>
+
+
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+
+
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/dropzone.min.js' %}"></script>
+<script src="{% static 'assets/js/flatpickr.js' %}"></script>
+<script src="{% static 'assets/js/flickity.pkgd.min.js' %}"></script>
+<script src="{% static 'assets/js/lightbox.min.js' %}"></script>
+<script src="{% static 'assets/js/rangeslider.js' %}"></script>
+<script src="{% static 'assets/js/select2.min.js' %}"></script>
+<script src="{% static 'assets/js/counterup.min.js' %}"></script>
+<script src="{% static 'assets/js/prism.js' %}"></script>
+
+<script src="{% static 'assets/js/addadult.js' %}"></script>
+<script src="{% static 'assets/js/custom.js' %}"></script>
+<!-- Date Booking Script -->
+<script src="{% static 'assets/js/jdate.min.js' %}"></script>
+<script src="{% static 'assets/js/fa.js' %}"></script>
+<script>
+    window.Date = window.JDate;
+    flatpickr("#checkinout", {
+        "locale": "fa",
+        mode: "range",
+        minDate: "today",
+        format: 'YYYY/MM/DD',
+    });
+    flatpickr(".choosedate", {
+        "locale": "fa"
+    });
+</script>
+
+<!-- sweet alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <script>
+                    Swal.fire({
+                        title: "ناموفق",
+                        text: "{{ message }}",
+                        icon: "error"
+                    });
+                </script>
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <script>
+                    Swal.fire({
+                        title: "موفق",
+                        text: "{{ message }}",
+                        icon: "success"
+                    });
+                </script>
+            {% else %}
+                <script>
+                    Swal.fire({
+                        text: "{{ message }}",
+                        icon: "info"
+                    });
+                </script>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}
+</body>
+</html>

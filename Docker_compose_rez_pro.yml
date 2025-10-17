@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+  backend:
+    container_name: backend_mjes
+    # مسیری که باید دنبال داکر فایل بگرده
+    build: .
+    command: sh -c "python manage.py collectstatic --noinput && python manage.py migrate && gunicorn core.wsgi --bind 0.0.0.0:8002"
+    volumes:
+      - .:/backend_mjes
+      - static_volume_mjes:/backend_mjes/static_file
+      - media_volume_mjes:/backend_mjes/media
+    ports:
+      - 8002:8002
+
+    environment:
+      - DB_NAME=mjes
+      - DB_USER=${MYSQL_USER}
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+      - DB_PORT=3306
+      - debug=False
+      - ALLOWED_HOSTS=kodomjaa.ir,www.kodomjaa.ir,mjes.ir,www.mjes.ir
+      - DJANGO_ENV=production
+
+    networks:
+      - shared_net
+    restart: always
+
+volumes:
+  static_volume_mjes:
+  media_volume_mjes:
+
+networks:
+  shared_net:
+    external: true
