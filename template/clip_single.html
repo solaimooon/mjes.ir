@@ -1,0 +1,68 @@
+{% extends 'masjed_base.html' %}
+
+{% block title %}
+{{ media_files.slug }}
+{% endblock %}
+
+{% block body-class %}
+categori-body
+{% endblock %}
+
+{% block content %}
+
+<!-- Header -->
+<div class="header-categori-page">
+    <img src="#"
+         alt="{{ media_files.slug }}"
+         class="img-fluid"
+         style="object-fit: contain; max-height: 250px; transition: transform 0.3s ease;">
+    <div class="overlay"></div>
+</div>
+
+<!-- Title -->
+<div class="section-title text-center my-5">
+    <h2 class="text-black text-center fw-bold display-6"
+        style="border-bottom: 3px solid #e63946; padding-bottom: 10px; display: inline-block;">
+        {{ clip.name }}
+    </h2>
+
+</div>
+
+<!-- Media Section -->
+<div class="container my-5">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="media-card shadow-sm rounded-4 p-4 bg-light">
+                <video class="w-100 rounded-3 shadow-lg"
+                       src="{{ clip.file.url }}"
+                       controls>
+                    مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info Section -->
+    <div class="row my-4">
+        <div class="col-12">
+            <div class="info-cards">
+                <div class="card bg-white rounded-3 shadow-sm mb-3 p-3">
+                    <div class="d-flex justify-content-between">
+                        <span class="text-secondary">نام اثر</span>
+                        <span class="text-dark">{{ clip.name }}</span>
+                    </div>
+                </div>
+
+                <div class="card bg-white rounded-3 shadow-sm mb-3 p-3">
+                    <div class="d-flex justify-content-between">
+                        <span class="text-secondary">سخنران/مداح</span>
+                        <span class="text-dark">{{ clip.owner.name }}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

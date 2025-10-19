@@ -18,7 +18,9 @@ urlpatterns = [
     path('live/', live, name='live'),
     path('report/', report, name='report'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+    path('clip/<str:slug>',clip_view, name='clip'),
     path('archive/<str:media_slug>/', media_single, name='single_media'),
+
     path('<str:category_slug>/', year_list, name='occasion_years'),
     path('<str:category_slug>/year:<int:year>/', occasion_list, name='occasion_list'),
     path('<str:category_slug>/<str:occasion_slug>/', night_list, name='night_list'),

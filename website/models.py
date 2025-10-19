@@ -221,3 +221,33 @@ class MediaFile(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class clip(models.Model):
+    name=models.CharField(max_length=50)
+    file=models.FileField(upload_to='media/',
+        verbose_name="فایل ")
+    slug=models.CharField(max_length=50)
+    image=models.ImageField(upload_to='media_night',
+        default='null',
+        verbose_name="تصویر نمایه")
+
+    owner = models.ForeignKey(
+        owner,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="صاحب اثر"
+    )
+
+    meta_title = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name="عنوان سئو"
+    )
+    meta_description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="توضیحات سئو"
+    )
