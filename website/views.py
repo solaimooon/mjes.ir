@@ -73,6 +73,7 @@ def media_list(request,category_slug,year,occasion_slug,night_slug, mosque_slug=
     return render(request, "archive_page_list_media.html", {"night": night, "media_files": media_files})
 
 def media_single(request,media_slug):
+    print("im here")
     media_files = MediaFile.objects.get(slug=media_slug)
     return render(request,'archive_singel_media.html',{"media_files":media_files})
 
