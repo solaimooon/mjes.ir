@@ -37,7 +37,6 @@ def report(request):
 
 
 def year_list(request, category_slug, mosque_slug=None):
-    mosque = get_current_mosque(request, mosque_slug)
     category = get_object_or_404(Category, slug=category_slug,)
     occasions = (
         category.occasions
@@ -46,14 +45,14 @@ def year_list(request, category_slug, mosque_slug=None):
             .values_list('first_id', flat=True)
     )
     occasions = Occasion.objects.filter(id__in=occasions)
-    return render(request, "archive_page_category.html", {"mosque": mosque, "category":category, "occasions":occasions})
+    return render(request, "archive_page_category.html", { "category":category, "occasions":occasions})
 
 
 def occasion_list(request, category_slug, year, mosque_slug=None):
     category = get_object_or_404(Category, slug=category_slug,)
     occasions = category.occasions.filter(year=year)
     return render(request, "archive_page_occasions.html", {
-        "mosque": mosque, "category": category, "year": year, "occasions": occasions
+     "category": category, "year": year, "occasions": occasions
     })
 
 
@@ -65,13 +64,13 @@ def night_list(request, category_slug,occasion_slug, mosque_slug=None):
     print("occation",occasion)
     nights = occasion.nights.all()
     print("empty",nights)
-    return render(request, "archive_page_night.html", {"mosque": mosque, "occasion": occasion, "nights": nights,"category":category})
+    return render(request, "archive_page_night.html", { "occasion": occasion, "nights": nights,"category":category})
 
 
 def media_list(request,category_slug,year,occasion_slug,night_slug, mosque_slug=None):
     night = get_object_or_404(Night, slug=night_slug,)
     media_files = night.media_files.all()
-    return render(request, "archive_page_list_media.html", {"mosque": mosque, "night": night, "media_files": media_files})
+    return render(request, "archive_page_list_media.html", {"night": night, "media_files": media_files})
 
 def media_single(request,media_slug):
     media_files = MediaFile.objects.get(slug=media_slug)

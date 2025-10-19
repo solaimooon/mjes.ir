@@ -13,7 +13,6 @@ services:
       - media_volume_mjes:/backend_mjes/media
     ports:
       - 8002:8002
-
     environment:
       - DB_NAME=mjes
       - DB_USER=${MYSQL_USER}
@@ -22,7 +21,6 @@ services:
       - debug=False
       - ALLOWED_HOSTS=kodomjaa.ir,www.kodomjaa.ir,mjes.ir,www.mjes.ir
       - DJANGO_ENV=production
-
     networks:
       - shared_net
     restart: always
@@ -34,3 +32,4 @@ volumes:
 networks:
   shared_net:
     external: true
+
