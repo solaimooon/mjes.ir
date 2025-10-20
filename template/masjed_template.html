@@ -98,25 +98,23 @@
 </section>
 
 
-<!-- محتوای رسانه‌ای تازه مسجد  -->
 <section class="container-fluid my-5" dir="rtl">
     <!-- هدر -->
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2 class="h5 mb-0">اخرین کلیپ ها</h2>
-        {# <a href="#" class="btn btn-outline-secondary btn-sm rounded-pill px-3">مشاهده همه</a>#}
+        <h2 class="h5 mb-0">آخرین کلیپ‌ها</h2>
     </div>
 
     <!-- ریل + دکمه‌ها -->
     <div class="position-relative">
         <!-- دکمه سمت راست -->
         <button class="btn btn-light shadow position-absolute end-0 top-50 translate-middle-y"
-                style="z-index: 2;" onclick="scrollRail(1)">
+                style="z-index: 2;" onclick="scrollRail('rail2', 1)">
             ›
         </button>
 
         <!-- دکمه سمت چپ -->
         <button class="btn btn-light shadow position-absolute start-0 top-50 translate-middle-y"
-                style="z-index: 2;" onclick="scrollRail(-1)">
+                style="z-index: 2;" onclick="scrollRail('rail2', -1)">
             ‹
         </button>
 
@@ -124,54 +122,55 @@
         <div id="rail2" class="d-flex flex-nowrap overflow-auto pb-2 px-2"
              style="scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;">
             {% for clip in clips %}
-            <div class="card shadow-sm rounded overflow-hidden mr-3"
-                 style="min-width:280px; scroll-snap-align:start;max-width: 350px">
-                <div style="height:180px; overflow:hidden;">
+            <div class="card shadow-sm rounded overflow-hidden me-3"
+                 style="min-width:280px; scroll-snap-align:start; max-width: 350px;">
+                <div style="height:180px; overflow:hidden; position:relative;">
                     <img src="{{ clip.image.url }}"
-                         class="w-100;height:100%; object-fit:cover;" alt="{{ media_celected.slug }}">
-                    <span class="badge rounded-pill text-dark fw-bold fs-6 position-absolute top-0 start-0 m-2 px-3 py-2"
+                         style="width:100%; height:100%; object-fit:cover;"
+                         alt="{{ clip.slug }}">
+                    <span class="badge rounded-pill text-light fw-bold fs-6 position-absolute top-0 start-0 m-2 px-3 py-2"
                           style="background-color: #00345b">
-                                <i class="fa fa-video-camera" aria-hidden="true"></i>
-                        </span>
+                        <i class="fa fa-video-camera" aria-hidden="true"></i>
+                    </span>
                 </div>
                 <div class="card-body p-3">
                     <h3 class="h6 mt-2 mb-1 text-truncate">{{ clip.name }}</h3>
-                    <div class="text-muted small mb-2"><i
-                            class="fa-solid fa-microphone text-danger ml-1"></i> {{ clip.owner.name }}
+                    <div class="text-muted small mb-2">
+                        <i class="fa-solid fa-microphone text-danger ms-1"></i> {{ clip.owner.name }}
                     </div>
                     <div class="d-flex justify-content-between">
                         <a href="{% url 'website:clip' slug=clip.slug %}"
-                           class="btn btn-outline-dark rounded-pill text-light" style="background-color: #00345b">
-                            مشاهده</a>
+                           class="btn btn-outline-dark rounded-pill text-light"
+                           style="background-color: #00345b;">
+                            مشاهده
+                        </a>
                     </div>
                 </div>
             </div>
             {% endfor %}
-
         </div>
     </div>
 </section>
 
 
-<!-- محتوای رسانه‌ای تازه مسجد  -->
+<!-- محتوای رسانه‌ای تازه مسجد -->
 <section class="container-fluid my-5" dir="rtl">
     <!-- هدر -->
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2 class="h5 mb-0">آرشیو آخرین مراسمات مسجد</h2>
-        {# <a href="#" class="btn btn-outline-secondary btn-sm rounded-pill px-3">مشاهده همه</a>#}
     </div>
 
     <!-- ریل + دکمه‌ها -->
     <div class="position-relative">
         <!-- دکمه سمت راست -->
         <button class="btn btn-light shadow position-absolute end-0 top-50 translate-middle-y"
-                style="z-index: 2;" onclick="scrollRail(1)">
+                style="z-index: 2;" onclick="scrollRail('rail', 1)">
             ›
         </button>
 
         <!-- دکمه سمت چپ -->
         <button class="btn btn-light shadow position-absolute start-0 top-50 translate-middle-y"
-                style="z-index: 2;" onclick="scrollRail(-1)">
+                style="z-index: 2;" onclick="scrollRail('rail', -1)">
             ‹
         </button>
 
@@ -179,38 +178,39 @@
         <div id="rail" class="d-flex flex-nowrap overflow-auto pb-2 px-2"
              style="scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;">
             {% for media_celected in mediafile_selected %}
-            <div class="card shadow-sm rounded overflow-hidden mr-3"
-                 style="min-width:280px; scroll-snap-align:start;max-width: 350px">
-                <div style="height:180px; overflow:hidden;">
+            <div class="card shadow-sm rounded overflow-hidden me-3"
+                 style="min-width:280px; scroll-snap-align:start; max-width: 350px;">
+                <div style="height:180px; overflow:hidden; position:relative;">
                     <img src="{{ media_celected.image.url }}"
-                         class="w-100;height:100%; object-fit:cover;" alt="{{ media_celected.slug }}">
-                    <span class="badge rounded-pill text-dark fw-bold fs-6 position-absolute top-0 start-0 m-2 px-3 py-2"
-                          style="background-color: #00345b">
-                            {% if media_celected.media_type == 'audio' %}
-                                <i class="fa-solid fa-music text-light"></i>
-                            {% else %}
-                                <i class="fa fa-video-camera" aria-hidden="true"></i>
-                            {% endif %}
-
-                        </span>
+                         style="width:100%; height:100%; object-fit:cover;"
+                         alt="{{ media_celected.slug }}">
+                    <span class="badge rounded-pill text-light fw-bold fs-6 position-absolute top-0 start-0 m-2 px-3 py-2"
+                          style="background-color: #00345b;">
+                        {% if media_celected.media_type == 'audio' %}
+                            <i class="fa-solid fa-music"></i>
+                        {% else %}
+                            <i class="fa fa-video-camera" aria-hidden="true"></i>
+                        {% endif %}
+                    </span>
                 </div>
                 <div class="card-body p-3">
                     <h3 class="h6 mt-2 mb-1 text-truncate">{{ media_celected.title }}</h3>
-                    <div class="text-muted small mb-2"><i
-                            class="fa-solid fa-microphone text-danger ml-1"></i> {{ media_celected.owner.name }}
+                    <div class="text-muted small mb-2">
+                        <i class="fa-solid fa-microphone text-danger ms-1"></i> {{ media_celected.owner.name }}
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <div class="text-muted small mb-2"><i
-                                class="fa-regular fa-calendar-alt text-danger ml-1"></i> {{ media_celected.date }}
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="text-muted small mb-2">
+                            <i class="fa-regular fa-calendar-alt text-danger ms-1"></i> {{ media_celected.date }}
                         </div>
                         <a href="{% url 'website:single_media' media_slug=media_celected.slug %}"
-                           class="btn btn-outline-dark rounded-pill text-light" style="background-color: #00345b">
-                            مشاهده</a>
+                           class="btn btn-outline-dark rounded-pill text-light"
+                           style="background-color: #00345b;">
+                            مشاهده
+                        </a>
                     </div>
                 </div>
             </div>
             {% endfor %}
-
         </div>
     </div>
 </section>
@@ -260,18 +260,14 @@
 </a>
 
 <!-- برای اسکرول فقی در حالت دکستاپ دکمه اضافه میشه -->
+<!-- جاوااسکریپت -->
 <script>
-    function scrollRail(direction) {
-        const rail = document.getElementById("rail");
-        rail.scrollBy({left: direction * 300, behavior: 'smooth'});
+function scrollRail(railId, direction) {
+    const rail = document.getElementById(railId);
+    if (rail) {
+        rail.scrollBy({ left: direction * 300, behavior: 'smooth' });
     }
-
-    function scrollRail_2(direction) {
-        const rail = document.getElementById("rail2");
-        rail.scrollBy({left: direction * 300, behavior: 'smooth'});
-    }
-
-
+}
 </script>
 
 

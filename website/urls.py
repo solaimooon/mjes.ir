@@ -10,7 +10,9 @@ from .sitemaps import *
 app_name = 'website'
 
 sitemaps = {
-    'static': StaticViewSitemap(),
+    "static": StaticViewSitemap(),
+    "mediafiles": mediafile_Sitemap(),
+    "clips": clip_sitemap(),
 }
 urlpatterns = [
 

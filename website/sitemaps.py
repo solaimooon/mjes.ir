@@ -26,4 +26,14 @@ class mediafile_Sitemap(sitemaps.Sitemap):
         return MediaFile.objects.all()
 
     def location(self, obj):
-        return reverse("website:rez_page", kwargs={"slug": obj.slug})
+        return reverse("website:single_media", kwargs={"media_slug": obj.slug})
+
+class clip_sitemap(sitemaps.Sitemap):
+    changefreq = "weekly"
+    priority = 0.8
+
+    def items(self):
+        return clip.objects.all()
+
+    def location(self, obj):
+        return reverse("website:clip", kwargs={"slug": obj.slug})
