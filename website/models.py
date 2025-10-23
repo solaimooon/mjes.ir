@@ -224,7 +224,7 @@ class MediaFile(models.Model):
 
 
 class clip(models.Model):
-    name=models.CharField(max_length=50)
+    name=models.CharField(max_length=50,verbose_name="تیتر")
     file=models.FileField(upload_to='media/',
         verbose_name="فایل ")
     slug=models.CharField(max_length=50)
@@ -251,3 +251,7 @@ class clip(models.Model):
         null=True,
         verbose_name="توضیحات سئو"
     )
+
+    class Meta:
+        verbose_name = " کلیپ"
+        verbose_name_plural = " کلیپ ها"

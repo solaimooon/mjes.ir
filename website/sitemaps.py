@@ -8,7 +8,7 @@ class StaticViewSitemap(sitemaps.Sitemap):
     protocol = "https"
     domain = "mjes.ir"  # 👈 دامنه مخصوص اپ مسجد
     priority = 1
-    changefreq = "weekly"
+    changefreq = "daily"
 
     def items(self):
         return ["website:index" ,"website:live","website:report"]
