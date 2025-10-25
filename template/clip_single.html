@@ -33,9 +33,20 @@ categori-body
     <div class="row g-4">
         <div class="col-12">
             <div class="media-card shadow-sm rounded-4 p-4 bg-light">
-                <video class="w-100 rounded-3 shadow-lg"
-                       src="{{ clip.file.url }}"
-                       controls>
+                <video
+                        src="{{ clip.file.url }}"
+                        poster="{{ clip.image.url }}"
+                        controls
+                        class="w-100 rounded-3 shadow-lg"
+                        style="
+              /* حداکثر عرض در دسکتاپ */
+        max-height: 600px;     /* حفظ نسبت 16:9 */
+        width: 100%;           /* تمام عرض در موبایل */
+        height: auto;          /* ارتفاع خودکار */
+        display: block;        /* برای margin وسط‌چینی */
+        margin: 0 auto;        /* وسط‌چین در صفحه */
+        object-fit: cover;     /* جلوگیری از کشیدگی تصویر */
+    ">
                     مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
                 </video>
             </div>
