@@ -24,8 +24,8 @@
 
         <!-- لوگو و نام سایت -->
         <div class="d-flex align-items-center flex-shrink-1" style="min-width: 0;">
-            <img src="{% static 'assets/img/emam_sajad_logo.jpg' %}" class="navbar-logo " alt="logo">
-            <span class="navbar-brand mb-0 site-name text-white ">مسجد جامع امام سجاد(ع)</span>
+            <a href="{% url 'website:index' %}"><img src="{% static 'assets/img/emam_sajad_logo.jpg' %}" style="text-decoration: none; color: #0000EE;" class="navbar-logo " alt="logo"></a>
+            <a href="{% url 'website:index' %}"><span class="navbar-brand mb-0 site-name text-white " style="text-decoration: none; color: #0000EE;">مسجد جامع امام سجاد(ع)</span></a>
         </div>
 
         <!-- دکمه ثبت‌نام و نشان -->
