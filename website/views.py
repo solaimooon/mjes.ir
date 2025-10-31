@@ -13,8 +13,8 @@ from django.db.models import Min
 
 def index(request):
     categorys = Category.objects.all()
-    mediafile_selected = MediaFile.objects.filter(Selected=True)
-    clips=clip.objects.all()
+    mediafile_selected = MediaFile.objects.filter(Selected=True).order_by('-id')
+    clips=clip.objects.all().order_by('-id')
 
     return render(request, 'masjed_template.html', {"categorys": categorys, "mediafile_selected": mediafile_selected,"clips":clips})
 
