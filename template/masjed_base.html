@@ -16,6 +16,21 @@
     <!-- neshan cdn -->
     <link rel="stylesheet" href="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.css"/>
     <script src="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.js"></script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "سایت رسمی مسجد جامع امام سجاد (ع)",
+          "url": "https://mjes.ir",
+          "logo": "{% static 'assets/img/emam_sajad_logo.jpg' %}",
+          "image": "{% static 'assets/img/emam_sajad_logo.jpg' %}",
+          "alternateName": [
+          ,"مسجد امام سجاد"
+          ,"مسجد امام سجاد اشرفی اصفهانی"
+          "مسجد امام سجاد صادقیه"
+  ],
+        }
+    </script>
 </head>
 <body class="{% block body-class %}{% endblock %}"
 >
@@ -24,8 +39,11 @@
 
         <!-- لوگو و نام سایت -->
         <div class="d-flex align-items-center flex-shrink-1" style="min-width: 0;">
-            <a href="{% url 'website:index' %}"><img src="{% static 'assets/img/emam_sajad_logo.jpg' %}" style="text-decoration: none; color: #0000EE;" class="navbar-logo " alt="logo"></a>
-            <a href="{% url 'website:index' %}"><span class="navbar-brand mb-0 site-name text-white " style="text-decoration: none; color: #0000EE;">مسجد جامع امام سجاد(ع)</span></a>
+            <a href="{% url 'website:index' %}"><img src="{% static 'assets/img/emam_sajad_logo.jpg' %}"
+                                                     style="text-decoration: none; color: #0000EE;" class="navbar-logo "
+                                                     alt="logo"></a>
+            <a href="{% url 'website:index' %}"><span class="navbar-brand mb-0 site-name text-white "
+                                                      style="text-decoration: none; color: #0000EE;">مسجد جامع امام سجاد(ع)</span></a>
         </div>
 
         <!-- دکمه ثبت‌نام و نشان -->
