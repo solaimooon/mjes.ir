@@ -59,12 +59,11 @@ def occasion_list(request, category_slug, year, mosque_slug=None):
 
 
 def night_list(request, category_slug,occasion_slug, mosque_slug=None):
-
     category = get_object_or_404(Category, slug=category_slug)
     print(occasion_slug)
     occasion = get_object_or_404(Occasion, slug=occasion_slug,)
     print("occation",occasion)
-    nights = occasion.nights.all()
+    nights = occasion.nights.all().order_by('number')
     print("empty",nights)
     return render(request, "archive_page_night.html", { "occasion": occasion, "nights": nights,"category":category})
 
@@ -83,6 +82,7 @@ def media_single(request,media_slug):
 def clip_view(request,slug):
     clip_media=clip.objects.get(slug=slug)
     return render(request,'clip_single.html',{"clip":clip_media})
+
 
 
 
