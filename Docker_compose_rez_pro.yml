@@ -18,7 +18,7 @@ services:
       - DB_USER=${MYSQL_USER}
       - DB_PASSWORD=${MYSQL_PASSWORD}
       - DB_PORT=3306
-      - debug=False
+      - debug=True
       - ALLOWED_HOSTS=kodomjaa.ir,www.kodomjaa.ir,mjes.ir,www.mjes.ir
       - DJANGO_ENV=production
     networks:
