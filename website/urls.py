@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,include
 from .views import *
 from django.contrib import admin
 from django.conf import settings
@@ -20,7 +20,8 @@ urlpatterns = [
     path('live/', live, name='live'),
     path('report/', report, name='report'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
-    path('clip/<str:slug>',clip_view, name='clip'),
+    path('robots.txt/', include('robots.urls')),
+    path('clip/<str:slug>', clip_view, name='clip'),
     path('archive/<str:media_slug>/', media_single, name='single_media'),
 
     path('<str:category_slug>/', year_list, name='occasion_years'),
