@@ -17,16 +17,16 @@ sitemaps = {
 urlpatterns = [
 
     path('', index, name='index'),
-    path('live/', live, name='live'),
-    path('report/', report, name='report'),
+    path('live', live, name='live'),
+    path('report', report, name='report'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
-    path('robots.txt/', include('robots.urls')),
+    path('robots.txt', include('robots.urls')),
     path('clip/<str:slug>', clip_view, name='clip'),
-    path('archive/<str:media_slug>/', media_single, name='single_media'),
+    path('archive/<str:media_slug>', media_single, name='single_media'),
 
-    path('<str:category_slug>/', year_list, name='occasion_years'),
-    path('<str:category_slug>/year:<int:year>/', occasion_list, name='occasion_list'),
-    path('<str:category_slug>/<str:occasion_slug>/', night_list, name='night_list'),
-    path('<str:category_slug>/<int:year>/<str:occasion_slug>/<str:night_slug>/', media_list, name='media_list'),
+    path('<str:category_slug>', year_list, name='occasion_years'),
+    path('<str:category_slug>/year:<int:year>', occasion_list, name='occasion_list'),
+    path('<str:category_slug>/<str:occasion_slug>', night_list, name='night_list'),
+    path('<str:category_slug>/<int:year>/<str:occasion_slug>/<str:night_slug>', media_list, name='media_list'),
 
 ]
