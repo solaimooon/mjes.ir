@@ -1,3 +1,5 @@
+from tabnanny import verbose
+
 from django.db import models
 from django_jalali.db import models as jmodels
 
@@ -256,3 +258,15 @@ class clip(models.Model):
     class Meta:
         verbose_name = " کلیپ"
         verbose_name_plural = " کلیپ ها"
+
+
+class baner(models.Model):
+    image=models.ImageField(upload_to='baner',verbose_name='تصویر')
+    active=models.BooleanField(verbose_name="فعال")
+
+    def __str__(self):
+        return f"بنر {self.id}"
+
+    class Meta:
+        verbose_name = "بنر"
+        verbose_name_plural = "بنرها"

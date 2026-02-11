@@ -9,29 +9,51 @@
 {% block content %}
 
     <!-- اسلایدر -->
-    <div id="carouselExampleFade" style="background-color: #000000" class="carousel slide carousel-fade"
-         data-bs-ride="carousel">
-        <div class="carousel-inner">
+    {% if banners %}
+        <div id="carouselExampleFade"
+             class="carousel slide carousel-fade"
+             data-bs-ride="carousel"
+             style="background-color: #000;">
+
+            <!-- indicators -->
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0"
-                        class="active"></button>
-                <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1"></button>
+                {% for banner in banners %}
+                    <button type="button"
+                            data-bs-target="#carouselExampleFade"
+                            data-bs-slide-to="{{ forloop.counter0 }}"
+                            class="{% if forloop.first %}active{% endif %}"
+                            {% if forloop.first %}aria-current="true"{% endif %}>
+                    </button>
+                {% endfor %}
             </div>
 
-
-            <div class="carousel-item active">
-                <video class="d-block w-100" style="max-height: 500px" autoplay loop muted>
-                    <source src="{% static 'assets/video/امام حسین فیلم - Trim.mp4' %}" type="video/mp4">
-                </video>
+            <!-- slides -->
+            <div class="carousel-inner">
+                {% for banner in banners %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <img src="{{ banner.image.url }}"
+                             class="d-block w-100 slider-img"
+                             alt="بنر مسجد">
+                    </div>
+                {% endfor %}
             </div>
+
+            {% if banners|length > 1 %}
+                <button class="carousel-control-prev" type="button"
+                        data-bs-target="#carouselExampleFade"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+
+                <button class="carousel-control-next" type="button"
+                        data-bs-target="#carouselExampleFade"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            {% endif %}
+
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
-    </div>
+    {% endif %}
     <!-- خدمات -->
     <section class="services-section py-5">
         <div class="container">

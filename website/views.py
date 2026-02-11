@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.shortcuts import get_object_or_404, render
-from .models import  Category, Occasion, Night, MediaFile,clip
+from .models import  Category, Occasion, Night, MediaFile,clip,baner
 from django.contrib.sites.shortcuts import get_current_site
 from django.http import HttpResponse
 from django.db.models import Min
@@ -15,8 +15,9 @@ def index(request):
     categorys = Category.objects.all()
     mediafile_selected = MediaFile.objects.filter(Selected=True).order_by('-id')
     clips=clip.objects.all().order_by('-id')
+    banners = baner.objects.filter(active=True)
 
-    return render(request, 'masjed_template.html', {"categorys": categorys, "mediafile_selected": mediafile_selected,"clips":clips})
+    return render(request, 'masjed_template.html', {"categorys": categorys, "mediafile_selected": mediafile_selected,"clips":clips,"banners": banners})
 
 # live page of masjed
 def live(request):

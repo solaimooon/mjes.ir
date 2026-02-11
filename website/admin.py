@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib import admin
-from .models import Category, Occasion, Night, MediaFile, style_media_file, owner,clip
+from .models import Category, Occasion, Night, MediaFile, style_media_file, owner,clip,baner
 from django.utils.html import format_html
 
 
@@ -146,6 +146,27 @@ class ClipAdmin(admin.ModelAdmin):
         return "بدون تصویر"
     image_preview.allow_tags = True
     image_preview.short_description = "پیش‌نمایش تصویر"
+
+
+
+
+@admin.register(baner)
+class BanerAdmin(admin.ModelAdmin):
+    list_display = ('id', 'image_preview', 'active')
+    list_filter = ('active',)
+    list_editable = ('active',)
+    search_fields = ('id',)
+    readonly_fields = ('image_preview',)
+
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html(
+                '<img src="{}" width="120" style="border-radius:8px;" />',
+                obj.image.url
+            )
+        return "—"
+
+    image_preview.short_description = "پیش‌نمایش"
 
 # فارسی‌سازی نام‌ها در پنل مدیریت
 admin.site.site_header = "مدیریت محتوای رسانه‌ای هیئت"
