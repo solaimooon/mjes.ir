@@ -12,7 +12,7 @@ class Category(models.Model):
     slug = models.CharField(
         max_length=100,
         verbose_name="نامک (slug)"
-        , unique=True
+        ,
     )
     image = models.ImageField(
         "تصویر دسته‌بندی",
@@ -53,7 +53,7 @@ class Occasion(models.Model):
         verbose_name="عنوان مناسبت"
     )
     year = models.IntegerField(verbose_name="سال")
-    slug = models.CharField(max_length=100, verbose_name="نامک (slug)",unique=True)
+    slug = models.CharField(max_length=100, verbose_name="نامک (slug)",)
     image = models.ImageField(
         upload_to='media_night',
         default='null',
@@ -113,7 +113,7 @@ class Night(models.Model):
         max_length=100,
         help_text="این فیلد به عنوان نام شب در کد استفاده می‌شود",
         verbose_name="نامک (slug)"
-    ,unique=True)
+    ,)
     image = models.ImageField(
         upload_to='media_night',
         default='null',
@@ -174,7 +174,7 @@ class MediaFile(models.Model):
         verbose_name="نوع مدیا"
     )
     title = models.CharField(max_length=200, verbose_name="عنوان فایل")
-    slug = models.CharField(max_length=100, verbose_name="نامک (slug)",unique=True)
+    slug = models.CharField(max_length=100, verbose_name="نامک (slug)",)
     image = models.ImageField(
         upload_to='media_night',
         default='null',
@@ -230,7 +230,7 @@ class clip(models.Model):
     name=models.CharField(max_length=50,verbose_name="تیتر")
     file=models.FileField(upload_to='media/',
         verbose_name="فایل ")
-    slug=models.CharField(max_length=50,unique=True)
+    slug=models.CharField(max_length=50,)
     image=models.ImageField(upload_to='media_night',
         default='null',
         verbose_name="تصویر نمایه")
