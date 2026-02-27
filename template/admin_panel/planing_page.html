@@ -1,0 +1,389 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% block countent %}
+    <div class="container-fluid">
+        <table class="table table-hover table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">روز های هفته</th>
+                <th colspan="2">بازه های زمانی مجاز</th>
+                <th scope="col">افزودن</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="col">شنبه</th>
+                <td colspan="2">
+                    {% for period in grouped_periods.0 %}
+
+                        <!-- فرم حذف (مخفی) -->
+                        <form id="delete-form-{{ period.id }}"
+                              action="{% url 'reservation:delete_available_time' period.id %}"
+                              method="POST"
+                              style="display:none;">
+                            {% csrf_token %}
+                        </form>
+
+                        <!-- دکمه بازه زمانی -->
+                        <button type="button"
+                                class="btn btn-sm btn-success m-1 delete-period"
+                                data-id="{{ period.id }}">
+                            {{ period.start_time|time:"H:i" }} -
+                            {{ period.end_time|time:"H:i" }}
+                        </button>
+
+                    {% endfor %}
+                    <div class="time-container" data-day="0"></div>
+                </td>
+                <td>
+                    <button class="btn btn-primary add-btn" data-day="0" data-toggle="modal"
+                            data-target="#exampleModalCenter">افزودن
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="col">یک شنبه</th>
+                <td colspan="2">
+                    {% for period in grouped_periods.1 %}
+
+                        <!-- فرم حذف (مخفی) -->
+                        <form id="delete-form-{{ period.id }}"
+                              action="{% url 'reservation:delete_available_time' period.id %}"
+                              method="POST"
+                              style="display:none;">
+                            {% csrf_token %}
+                        </form>
+
+                        <!-- دکمه بازه زمانی -->
+                        <button type="button"
+                                class="btn btn-sm btn-success m-1 delete-period"
+                                data-id="{{ period.id }}">
+                            {{ period.start_time|time:"H:i" }} -
+                            {{ period.end_time|time:"H:i" }}
+                        </button>
+
+                    {% endfor %}
+                    <div class="time-container" data-day="1"></div>
+                </td>
+                <td>
+                    <button class="btn btn-primary add-btn" data-day="1" data-toggle="modal"
+                            data-target="#exampleModalCenter">افزودن
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="col">دوشنبه</th>
+                <td colspan="2">
+                    {% for period in grouped_periods.2 %}
+
+                        <!-- فرم حذف (مخفی) -->
+                        <form id="delete-form-{{ period.id }}"
+                              action="{% url 'reservation:delete_available_time' period.id %}"
+                              method="POST"
+                              style="display:none;">
+                            {% csrf_token %}
+                        </form>
+
+                        <!-- دکمه بازه زمانی -->
+                        <button type="button"
+                                class="btn btn-sm btn-success m-1 delete-period"
+                                data-id="{{ period.id }}">
+                            {{ period.start_time|time:"H:i" }} -
+                            {{ period.end_time|time:"H:i" }}
+                        </button>
+
+                    {% endfor %}
+                    <div class="time-container" data-day="2"></div>
+                </td>
+                <td>
+                    <button class="btn btn-primary add-btn" data-day="2" data-toggle="modal"
+                            data-target="#exampleModalCenter">افزودن
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="col">سه شنبه</th>
+
+                <td colspan="2">
+                    {% for period in grouped_periods.3 %}
+
+                        <!-- فرم حذف (مخفی) -->
+                        <form id="delete-form-{{ period.id }}"
+                              action="{% url 'reservation:delete_available_time' period.id %}"
+                              method="POST"
+                              style="display:none;">
+                            {% csrf_token %}
+                        </form>
+
+                        <!-- دکمه بازه زمانی -->
+                        <button type="button"
+                                class="btn btn-sm btn-success m-1 delete-period"
+                                data-id="{{ period.id }}">
+                            {{ period.start_time|time:"H:i" }} -
+                            {{ period.end_time|time:"H:i" }}
+                        </button>
+
+                    {% endfor %}
+                    <div class="time-container" data-day="3"></div>
+                </td>
+                <td>
+                    <button class="btn btn-primary add-btn" data-day="3" data-toggle="modal"
+                            data-target="#exampleModalCenter">افزودن
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="col">چهارشنبه</th>
+                <td colspan="2">
+                    {% for period in grouped_periods.4 %}
+
+                        <!-- فرم حذف (مخفی) -->
+                        <form id="delete-form-{{ period.id }}"
+                              action="{% url 'reservation:delete_available_time' period.id %}"
+                              method="POST"
+                              style="display:none;">
+                            {% csrf_token %}
+                        </form>
+
+                        <!-- دکمه بازه زمانی -->
+                        <button type="button"
+                                class="btn btn-sm btn-success m-1 delete-period"
+                                data-id="{{ period.id }}">
+                            {{ period.start_time|time:"H:i" }} -
+                            {{ period.end_time|time:"H:i" }}
+                        </button>
+
+                    {% endfor %}
+                    <div class="time-container" data-day="4"></div>
+                </td>
+                <td>
+                    <button class="btn btn-primary add-btn" data-day="4" data-toggle="modal"
+                            data-target="#exampleModalCenter">افزودن
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="col">پنج شنبه</th>
+                <td colspan="2">
+                    {% for period in grouped_periods.5 %}
+
+                        <!-- فرم حذف (مخفی) -->
+                        <form id="delete-form-{{ period.id }}"
+                              action="{% url 'reservation:delete_available_time' period.id %}"
+                              method="POST"
+                              style="display:none;">
+                            {% csrf_token %}
+                        </form>
+
+                        <!-- دکمه بازه زمانی -->
+                        <button type="button"
+                                class="btn btn-sm btn-success m-1 delete-period"
+                                data-id="{{ period.id }}">
+                            {{ period.start_time|time:"H:i" }} -
+                            {{ period.end_time|time:"H:i" }}
+                        </button>
+
+                    {% endfor %}
+                    <div class="time-container" data-day="5"></div>
+                </td>
+                <td>
+                    <button class="btn btn-primary add-btn" data-day="5" data-toggle="modal"
+                            data-target="#exampleModalCenter">افزودن
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="col">جمعه</th>
+                <td colspan="2">
+                    <div class="time-container" data-day="6"></div>
+                    {% for period in grouped_periods.6 %}
+
+                        <!-- فرم حذف (مخفی) -->
+                        <form id="delete-form-{{ period.id }}"
+                              action="{% url 'reservation:delete_available_time' period.id %}"
+                              method="POST"
+                              style="display:none;">
+                            {% csrf_token %}
+                        </form>
+
+                        <!-- دکمه بازه زمانی -->
+                        <button type="button"
+                                class="btn btn-sm btn-success m-1 delete-period"
+                                data-id="{{ period.id }}">
+                            {{ period.start_time|time:"H:i" }} -
+                            {{ period.end_time|time:"H:i" }}
+                        </button>
+
+                    {% endfor %}
+                </td>
+                <td>
+                    <button class="btn btn-primary add-btn" data-day="6" data-toggle="modal"
+                            data-target="#exampleModalCenter">افزودن
+                    </button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">افزودن بازه زمانی مجاز رزرو</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="availableTimeForm">
+                    <div class="modal-body">
+                        {% csrf_token %}
+                        <label>ساعت شروع </label>
+                        {{ AvailableTime_pure_form.start_time }}
+                        <label>ساعت پایان </label>
+                        {{ AvailableTime_pure_form.end_time }}
+                        <input type="hidden" id="day_of_week_input" name="day_of_week">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                        <button type="submit" class="btn btn-primary">ذخیره</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const modal = document.getElementById('exampleModalCenter');
+            const dayInput = document.getElementById("day_of_week_input");
+            const form = document.getElementById("availableTimeForm");
+
+            // باز کردن مودال و ست کردن روز
+            document.querySelectorAll(".add-btn").forEach(button => {
+                button.addEventListener("click", function () {
+                    const dayNumber = this.getAttribute("data-day");
+                    dayInput.value = dayNumber;
+
+                    // باز کردن مودال (Bootstrap 4)
+                    $(modal).modal('show'); // چون Bootstrap 4 برای مودال به jQuery نیاز دارد
+                });
+            });
+
+            // ارسال فرم با AJAX
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(form);
+
+                fetch("{% url 'reservation:add_plan_salon' %}", {
+                    method: "POST",
+                    headers: {
+                        "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value
+                    },
+                    body: formData
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Server error: " + response.status);
+                        }
+                        return response.json();   // ✅ حالا JSON واقعی می‌گیریم
+                    })
+                    .then(data => {
+                        console.log("DATA:", data);
+
+                        if (data.status === "success") {
+
+                            // بستن مودال
+                            $(modal).modal('hide');
+
+                            // پیدا کردن container مربوط به روز
+                            const container = document.querySelector(
+                                `.time-container[data-day="${data.day}"]`
+                            );
+
+                            // ------------------------
+                            // 1️⃣ ساخت فرم حذف
+                            // ------------------------
+                            const deleteForm = document.createElement("form");
+                            deleteForm.method = "POST";
+                            deleteForm.action = `/rezervation/delete-available-time/${data.id}/`;
+                            deleteForm.id = `delete-form-${data.id}`;
+                            deleteForm.style.display = "none";
+
+                            // csrf
+                            const csrfInput = document.createElement("input");
+                            csrfInput.type = "hidden";
+                            csrfInput.name = "csrfmiddlewaretoken";
+                            csrfInput.value = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+                            deleteForm.appendChild(csrfInput);
+
+                            container.appendChild(deleteForm);
+
+                            // ------------------------
+                            // 2️⃣ ساخت دکمه بازه زمانی
+                            // ------------------------
+                            const btn = document.createElement("button");
+                            btn.type = "button";
+                            btn.className = "btn btn-sm btn-success m-1 delete-period";
+                            btn.dataset.id = data.id;
+                            btn.innerText = `${data.start} - ${data.end}`;
+
+                            container.appendChild(btn);
+
+                            form.reset();
+
+                        } else {
+                            console.log("FORM ERRORS:", data.errors);
+                            alert("خطا در ثبت اطلاعات");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("FETCH ERROR:", error);
+                    });
+            });
+
+        });
+    </script>
+    <!-- sweet alert for delete -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener("click", function (e) {
+            if (e.target.classList.contains("delete-period")) {
+
+                let objectId = e.target.dataset.id;
+
+                Swal.fire({
+                    title: 'آیا مطمئن هستید؟',
+                    text: "پس از حذف قادر به بازیابی نمی باشید",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'بله حذف کن!',
+                    cancelButtonText: 'انصراف'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('delete-form-' + objectId).submit();
+                    }
+                });
+            }
+        });
+    </script>
+{% endblock %}
+
+
+</body>
+</html>

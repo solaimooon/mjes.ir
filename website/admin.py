@@ -169,7 +169,7 @@ class BanerAdmin(admin.ModelAdmin):
     image_preview.short_description = "پیش‌نمایش"
 
 # فارسی‌سازی نام‌ها در پنل مدیریت
-admin.site.site_header = "مدیریت محتوای رسانه‌ای هیئت"
+admin.site.site_header = "مدیریت محتوای رسانه‌ای مسجد"
 admin.site.site_title = "مدیریت رسانه‌ها"
 admin.site.index_title = "داشبورد مدیریت"
 

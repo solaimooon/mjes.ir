@@ -42,8 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django_jalali',
+    'rezervation',
+    'my_profile',
     'robots',
     'website',
+
 ]
 
 MIDDLEWARE = [
@@ -139,6 +142,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SITE_ID = 1
 
 ROBOTS_USE_SITEMAP = True
+
+#declere the new model of user
+AUTH_USER_MODEL = 'my_profile.My_user'
 
 
 
