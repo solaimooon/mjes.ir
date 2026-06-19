@@ -1,10 +1,369 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رزرو مسجد جامع امام سجاد (ع)</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-v4-rtl/4.6.2-1/css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'assets/rezerve.css' %}">
 </head>
 <body>
-$END$
+
+<!-- Hero -->
+<section class="hero-section">
+    <img src="{% static 'images/mosque-courtyard.jpg' %}" alt="صحن مسجد جامع امام سجاد">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>مسجد جامع امام سجاد (ع)</h1>
+        <p><i class="fas fa-map-marker-alt ml-1"></i> اصفهان، خیابان اسکندر زاده</p>
+    </div>
+</section>
+
+<!-- Media Tabs -->
+<div class="container py-5">
+    <section class="mb-5">
+        <ul class="nav justify-content-center mb-4 media-tabs" role="tablist">
+            <li class="nav-item mt-2">
+                <a class="nav-link active" data-toggle="tab" href="#tab-courtyard-images" role="tab">
+                    <i class="fas fa-images ml-1"></i> صحن اصلی
+                </a>
+            </li>
+            <li class="nav-item mt-2">
+                <a class="nav-link" data-toggle="tab" href="#tab-hall-images" role="tab">
+                    <i class="fas fa-images ml-1"></i>سالن اجتماعات
+                </a>
+            </li>
+            <li class="nav-item mt-2">
+                <a class="nav-link" data-toggle="tab" href="#tab-video" role="tab">
+                    <i class="fas fa-play ml-1"></i> ویدئو
+                </a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <!-- Courtyard Carousel -->
+            <div class="tab-pane fade show active" id="tab-courtyard-images" role="tabpanel">
+                <div id="courtyardCarousel" class="carousel slide gallery-carousel" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        {% for img in courtyard_images %}
+                            <li data-target="#courtyardCarousel" data-slide-to="{{ forloop.counter0 }}"
+                                {% if forloop.first %}class="active"{% endif %}></li>
+                        {% endfor %}
+                    </ol>
+                    <div class="carousel-inner">
+                        {% for img in courtyard_images %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <img src="{{ img.url }}" alt="{{ img.alt }}">
+                                <div class="carousel-caption-custom">{{ img.caption|default:"صحن اصلی مسجد" }}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#courtyardCarousel" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#courtyardCarousel" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hall Carousel -->
+            <div class="tab-pane fade" id="tab-hall-images" role="tabpanel">
+                <div id="hallCarousel" class="carousel slide gallery-carousel" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        {% for img in hall_images %}
+                            <li data-target="#hallCarousel" data-slide-to="{{ forloop.counter0 }}"
+                                {% if forloop.first %}class="active"{% endif %}></li>
+                        {% endfor %}
+                    </ol>
+                    <div class="carousel-inner">
+                        {% for img in hall_images %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <img src="{{ img.url }}" alt="{{ img.alt }}">
+                                <div class="carousel-caption-custom">{{ img.caption|default:"سالن اجتماعات" }}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#hallCarousel" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#hallCarousel" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video -->
+            {% load static %}
+
+            <div class="tab-pane fade" id="tab-video" role="tabpanel">
+                <div class="container py-4">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 col-md-10">
+
+                            <div class="ratio ratio-16x9 rounded overflow-hidden shadow-sm">
+                                <video controls class="w-100 h-100">
+                                    <source src="{% static 'assets/video/sample.mp4' %}" type="video/mp4">
+                                    مرورگر شما از ویدیو پشتیبانی نمی‌کند.
+                                </video>
+                            </div>
+
+                            <p class="text-muted small text-center mt-3">
+                                ویدئوی معرفی مسجد و فضاها
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specs -->
+    <section class="mb-5">
+        <h2 class="section-title">مشخصات فضاها</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="spec-card">
+                    <h3>صحن اصلی مسجد</h3>
+                    <div class="spec-item">
+                        <span class="label"><i class="fas fa-users"></i> گنجایش</span>
+                        <span class="value">۷۰ نفر</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="label"><i class="fas fa-ruler-combined"></i> مساحت</span>
+                        <span class="value">۲۰۰ متر مربع</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="label"><i class="fas fa-clock"></i> ساعات قابل رزرو</span>
+                        <span class="value">24 ساعته</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="label"><i class="fas fa-money-bill-wave"></i> قیمت</span>
+                        <span class="value">۵۰۰,۰۰۰ تومان</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="spec-card">
+                    <h3>سالن اجتماعات</h3>
+                    <div class="spec-item">
+                        <span class="label"><i class="fas fa-users"></i> گنجایش</span>
+                        <span class="value">۷۰۰ نفر (صندلی)</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="label"><i class="fas fa-ruler-combined"></i> مساحت</span>
+                        <span class="value">۶۰۰ متر مربع</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="label"><i class="fas fa-clock"></i> ساعات قابل رزرو</span>
+                        <span class="value">24ساعته</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="label"><i class="fas fa-money-bill-wave"></i> قیمت</span>
+                        <span class="value">۲,۰۰۰,۰۰۰ تومان</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities -->
+    <section class="mb-5">
+        <h2 class="section-title">امکانات مسجد</h2>
+        <div class="row">
+            <div class="col-6 col-md-3 col-lg-2">
+                <div class="amenity-item">
+                    <div class="amenity-icon"><i class="fas fa-parking"></i></div>
+                    <p>پارکینگ</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 col-lg-2">
+                <div class="amenity-item">
+                    <div class="amenity-icon"><i class="fas fa-volume-up"></i></div>
+                    <p>سیستم صوتی</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 col-lg-2">
+                <div class="amenity-item">
+                    <div class="amenity-icon"><i class="fas fa-snowflake"></i></div>
+                    <p>سرمایش و گرمایش</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 col-lg-2">
+                <div class="amenity-item">
+                    <div class="amenity-icon"><i class="fas fa-utensils"></i></div>
+                    <p>آشپزخانه</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 col-lg-2">
+                <div class="amenity-item">
+                    <div class="amenity-icon"><i class="fas fa-star"></i></div>
+                    <p>سالن VIP</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 col-lg-2">
+                <div class="amenity-item">
+                    <div class="amenity-icon"><i class="fas fa-wifi"></i></div>
+                    <p>اینترنت Wi-Fi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-fluid my-5" dir="rtl">
+
+    <div class="card shadow-lg border-0">
+        <div class="card-body p-4">
+
+            <!-- امکانات عمومی -->
+            <div class="row mb-4">
+                <div class="col-12 text-right mb-3">
+                    <h5 class="font-weight-bold text-info">
+                        امکانات عمومی مسجد
+                    </h5>
+                </div>
+
+                <div class="col-md-6">
+                    <ul class="list-unstyled text-right">
+                        <li class="mb-3 d-flex justify-content-between align-items-center">
+                            <span>پارکینگ</span>
+                            <span class="badge badge-success badge-pill">✓</span>
+                        </li>
+                        <li class="mb-3 d-flex justify-content-between align-items-center">
+                            <span>دسترسی آسان به بزرگراه‌های حکیم و شهید فهمیده</span>
+                            <span class="badge badge-success badge-pill">✓</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6">
+                    <ul class="list-unstyled text-right">
+                        <li class="mb-3 d-flex justify-content-between align-items-center">
+                            <span>فیلم‌برداری مراسم و صوت با کیفیت</span>
+                            <span class="badge badge-success badge-pill">✓</span>
+                        </li>
+                        <li class="mb-3 d-flex justify-content-between align-items-center">
+                            <span>امکان سرو ناهار و شام در سالن</span>
+                            <span class="badge badge-success badge-pill">✓</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- سالن اجتماعات -->
+            <div class="row mt-4">
+                <div class="col-12 text-right mb-3">
+                    <h5 class="font-weight-bold text-info">
+                        سالن اجتماعات — امکانات اختصاصی
+                    </h5>
+                </div>
+
+                <div class="col-md-6">
+                    <ul class="list-unstyled text-right">
+                        <li class="mb-3 d-flex justify-content-between align-items-center">
+                            <span>سالن مبله ۷۰۰ صندلی</span>
+                            <span class="badge badge-success badge-pill">✓</span>
+                        </li>
+                        <li class="mb-3 d-flex justify-content-between align-items-center">
+                            <span>سالن VIP</span>
+                            <span class="badge badge-success badge-pill">✓</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6">
+                    <ul class="list-unstyled text-right">
+                        <li class="mb-3 d-flex justify-content-between align-items-center">
+                            <span>سیستم صوتی حرفه‌ای</span>
+                            <span class="badge badge-success badge-pill">✓</span>
+                        </li>
+                        <li class="mb-3 d-flex justify-content-between align-items-center">
+                            <span>اتاق آماده‌سازی عروس و داماد</span>
+                            <span class="badge badge-success badge-pill">✓</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+    <!-- Selection -->
+    <section class="mb-5">
+        <h2 class="section-title">انتخاب فضا</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-5 mb-4">
+                <div class="selection-card" id="card-courtyard" onclick="selectSpace('courtyard')">
+                    <div class="position-relative">
+                        <img src="{% static 'images/mosque-courtyard.jpg' %}" alt="صحن اصلی" class="card-img">
+                        <span class="badge-label">صحن</span>
+                    </div>
+                    <div class="card-body p-4">
+                        <h5>صحن اصلی مسجد</h5>
+                        <p class="info-line"><i class="fas fa-users"></i> گنجایش: ۷۰ نفر</p>
+                        <p class="info-line"><i class="fas fa-money-bill-wave"></i> قیمت: ۵۰۰,۰۰۰ تومان</p>
+                        <button class="btn-select mt-2" id="btn-courtyard">انتخاب فضا</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 mb-4">
+                <div class="selection-card" id="card-hall" onclick="selectSpace('hall')">
+                    <div class="position-relative">
+                        <img src="{% static 'images/meeting-hall.jpg' %}" alt="سالن اجتماعات" class="card-img">
+                        <span class="badge-label">سالن</span>
+                    </div>
+                    <div class="card-body p-4">
+                        <h5>سالن اجتماعات</h5>
+                        <p class="info-line"><i class="fas fa-users"></i> گنجایش: ۷۰۰ نفر</p>
+                        <p class="info-line"><i class="fas fa-money-bill-wave"></i> قیمت: ۲,۰۰۰,۰۰۰ تومان</p>
+                        <button class="btn-select mt-2" id="btn-hall">انتخاب فضا</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-3 d-none" id="reserve-btn-wrapper">
+            <button class="btn-reserve" onclick="goToReserve()">انتخاب تاریخ و رزرو</button>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <p>با خیال راحت به ما اعتماد کنید</p>
+    <p>مسجد جامع امام سجاد — رزرو آنلاین سالن و صحن</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    let selectedSpace = null;
+
+    function selectSpace(space) {
+        selectedSpace = space;
+        document.querySelectorAll('.selection-card').forEach(c => c.classList.remove('selected'));
+        document.querySelectorAll('.btn-select').forEach(b => {
+            b.classList.remove('active');
+            b.textContent = 'انتخاب فضا';
+        });
+        document.getElementById('card-' + space).classList.add('selected');
+        const btn = document.getElementById('btn-' + space);
+        btn.classList.add('active');
+        btn.textContent = '✓ انتخاب شده';
+        document.getElementById('reserve-btn-wrapper').classList.remove('d-none');
+    }
+
+    function goToReserve() {
+        window.location.href = "#?space=" + selectedSpace;
+    }
+</script>
 </body>
 </html>

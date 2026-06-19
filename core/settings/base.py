@@ -144,7 +144,7 @@ SITE_ID = 1
 ROBOTS_USE_SITEMAP = True
 
 #declere the new model of user
-AUTH_USER_MODEL = 'my_profile.My_user'
+#AUTH_USER_MODEL = 'my_profile.My_user'
 
 
 
