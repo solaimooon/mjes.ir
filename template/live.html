@@ -1,9 +1,9 @@
 {% extends 'masjed_base.html' %}
 {% load static %}
 
-    {% block title %}
-        پخش زنده_مسجد جامع امام جامع امام سجاد(ع)
-    {% endblock %}
+{% block title %}
+    پخش زنده_مسجد جامع امام جامع امام سجاد(ع)
+{% endblock %}
 
 
 {% block body-class %}
@@ -11,27 +11,43 @@
 {% endblock %}
 {% block content %}
 
-<!-- live -->
-<section class="py-5">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <div class="shadow p-3 bg-white rounded-3">
-                    <div class="ratio ratio-16x9">
-                        <iframe
-                                src="https://www.aparat.com/embed/live/mjes.ir"
-                                allowfullscreen
-                                scrolling="no"
-                                allow="autoplay; encrypted-media"
-                                webkitallowfullscreen="true"
-                                mozallowfullscreen="true">
-                        </iframe>
+    <!-- live -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10">
+                    <div class="shadow p-3 bg-white rounded-3">
+
+                        <!-- Embed Aparat Live -->
+                        <div class="h_iframe-aparat_embed_frame ratio ratio-16x9">
+                            <style>
+                                .h_iframe-aparat_embed_frame {
+                                    position: relative;
+                                }
+
+                                .h_iframe-aparat_embed_frame iframe {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                            </style>
+                            <span style="display: block;padding-top: 56.25%;"></span>
+                            <iframe
+                                    scrolling="no"
+                                    allowFullScreen="true"
+                                    webkitallowfullscreen="true"
+                                    mozallowfullscreen="true"
+                                    src="https://www.aparat.com/embed/live/mjes.ir">
+                            </iframe>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
 {% endblock %}
