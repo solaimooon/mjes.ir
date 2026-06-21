@@ -270,3 +270,7 @@ class baner(models.Model):
     class Meta:
         verbose_name = "بنر"
         verbose_name_plural = "بنرها"
+
+
+
+
